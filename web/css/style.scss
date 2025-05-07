@@ -1,19 +1,35 @@
+@font-face {
+  src: url("/fonts/concert-one.ttf");
+  font-family: 'concert-one', sans-serif;
+  font-face-name: concert-one;
+}
+
+$accent: #00FFA2;
+$background: #DDFFE0;
+
+$dark-primary: #00796B;
+$dark-secondary: #004D3E;
+
+$reg-primary: #009688;
+$reg-secondary: #006E59;
+
+$light-primary: #B2DFDB;
+
+$text-primary: #000;
+$text-secondary: #fff;
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-$text-primary: #f0f;
+header {
+  width: 100%;
+  height: 8vw;
+  background-color: $dark-primary;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-.test {
-  color: $text-primary;
-  font: {
-    size: 1vw;
-    family: monospace;
-  }
-
-  img {
-    max-width: 20vw;
-  }
 }

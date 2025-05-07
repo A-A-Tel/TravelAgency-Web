@@ -1,16 +1,18 @@
+@font-face {
+  src: url("/fonts/concert-one.ttf");
+  font-family: 'concert-one', sans-serif;
+  font-face-name: concert-one; }
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
 
-.test {
-  color: #f0f;
-  font-size: 1vw;
-  font-family: monospace;
-}
-.test img {
-  max-width: 20vw;
-}
+header {
+  width: 100%;
+  height: 8vw;
+  background-color: #00796B;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
 
 /*# sourceMappingURL=style.css.map */
