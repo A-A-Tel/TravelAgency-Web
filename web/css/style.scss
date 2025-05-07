@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+$text-primary: #f0f;
+
+.test {
+  color: $text-primary;
+  font: {
+    size: 1vw;
+    family: monospace;
+  }
+
+  img {
+    max-width: 20vw;
+  }
+}
