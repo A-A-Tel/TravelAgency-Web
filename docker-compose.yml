@@ -1,0 +1,32 @@
+services:
+  web:
+    image: php:8.0-apache
+    container_name: travel_web
+    build:
+      context: web/
+    restart: no
+    ports:
+      - "1000:80"
+    volumes:
+      - ./web:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mysql:latest
+    restart: no
+    build:
+      context: ./db/
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: travel_data
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+    ports:
+      - "3306:3306"
+    volumes:
+      - travel_data:/var/lib/mysql
+      - ./db/init.sql:/var/init.sql
+
+volumes:
+  travel_data:
