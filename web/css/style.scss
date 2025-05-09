@@ -70,6 +70,7 @@ nav {
 .mode-button {
   width: 3vw;
   height: 3vw;
-
-  background: url("/img/sun.svg");
+  background: url("/img/sun.svg") no-repeat center / 100%;
+  position: absolute;
+  left: 4.6vw;
 }
