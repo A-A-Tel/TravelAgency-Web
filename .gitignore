@@ -1,2 +1,5 @@
 *.env
 .idea/
+*.sass-cache/
+*.css
+*.css.map
