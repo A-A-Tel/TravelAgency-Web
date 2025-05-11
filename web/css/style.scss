@@ -67,10 +67,22 @@ nav {
   }
 }
 
+.avatar {
+  position: absolute;
+  right: 4vw;
+  width: 5vw;
+  height: 5vw;
+  border-radius: 50%;
+}
+
 .mode-button {
   width: 3vw;
   height: 3vw;
   background: url("/img/sun.svg") no-repeat center / 100%;
   position: absolute;
   left: 4.6vw;
+}
+
+.login-button {
+  background: #FF9E58;
 }
