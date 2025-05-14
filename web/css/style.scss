@@ -1,3 +1,17 @@
+$accent: #00FFA2;
+$background: #DDFFE0;
+
+$dark-primary: #00796B;
+$dark-secondary: #004D3E;
+
+$reg-primary: #009688;
+$reg-secondary: #006E59;
+
+$light-primary: #B2DFDB;
+
+$text-primary: #000;
+$text-secondary: #fff;
+
 @font-face {
   src: url("/fonts/concert-one.ttf");
   font-family: 'concert-one';
@@ -18,19 +32,34 @@
   font-family: 'playfair-bold';
 }
 
-$accent: #00FFA2;
-$background: #DDFFE0;
+@mixin centered-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: fit-content;
+  height: fit-content;
+  color: $text-secondary;
+  h1, h2 {
+    font: {
+      family: 'anton-regular', sans-serif;
+      size: 2.8vw;
+    }
+  }
+  p {
+    max-width: 40vw;
+    font: {
+      family: 'playfair-display', sans-serif;
+      size: 2.2vw;
+    }
+  }
+}
 
-$dark-primary: #00796B;
-$dark-secondary: #004D3E;
-
-$reg-primary: #009688;
-$reg-secondary: #006E59;
-
-$light-primary: #B2DFDB;
-
-$text-primary: #000;
-$text-secondary: #fff;
+@mixin outline {
+  h1, h2, p {
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  }
+}
 
 * {
   box-sizing: border-box;
@@ -94,6 +123,7 @@ footer {
   width: 100%;
   height: 10vw;
   padding: 0 6vw;
+  user-select: none;
   span {
     font: {
       family: 'concert-one';
@@ -135,13 +165,16 @@ footer {
   background: #FF9E58;
 }
 
-.home-main {
-  background: #000 url("/img/mountain.png") no-repeat center / 100%;
+.main {
   width: 100%;
   height: 55vw;
   display: flex;
   justify-content: space-between;
   padding: 6vw;
+}
+
+.home-main {
+  background: #000 url("/img/mountain.png") no-repeat center / 100%;
 }
 
 .home-intro {
@@ -192,4 +225,48 @@ footer {
 
 .hidden {
   visibility: hidden;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-main {
+  background: #000 url("/img/train.png") no-repeat center / 100%;
+}
+
+.about-description {
+  @include centered-box;
+  @include outline;
+  margin: 0 auto;
+}
+
+.about-container {
+  display: flex;
+  gap: 20vw;
+}
+
+.about-point {
+  color: $text-secondary;
+  align-items: center;
+  gap: 1vw;
+  font: {
+    family: 'anton-regular', sans-serif;
+    size: 1.7vw;
+  }
+  text-wrap: nowrap;
+}
+
+.about-points {
+  img {
+    width: 3vw;
+    height: 3vw;
+  }
+  gap: 1.7vw;
 }
