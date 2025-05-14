@@ -123,6 +123,7 @@ footer {
   width: 100%;
   height: 10vw;
   padding: 0 6vw;
+  user-select: none;
   span {
     font: {
       family: 'concert-one';
@@ -226,8 +227,14 @@ footer {
   visibility: hidden;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
 .column {
-  flex-flow: column nowrap;
+  display: flex;
+  flex-direction: column;
 }
 
 .about-main {
@@ -243,4 +250,23 @@ footer {
 .about-container {
   display: flex;
   gap: 20vw;
+}
+
+.about-point {
+  color: $text-secondary;
+  align-items: center;
+  gap: 1vw;
+  font: {
+    family: 'anton-regular', sans-serif;
+    size: 1.7vw;
+  }
+  text-wrap: nowrap;
+}
+
+.about-points {
+  img {
+    width: 3vw;
+    height: 3vw;
+  }
+  gap: 1.7vw;
 }
