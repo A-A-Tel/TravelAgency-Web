@@ -278,8 +278,9 @@ footer {
 .item-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin: 12vw;
-  row-gap: 9vw;
+  margin: 12vw auto;
+  width: fit-content;
+  gap: 9vw;
 }
 
 .item {
