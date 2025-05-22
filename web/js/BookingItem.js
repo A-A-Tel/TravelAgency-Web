@@ -16,7 +16,7 @@ class BookingItem extends HTMLElement {
                 <button style="background: #F00">-</button>
                 <button style="background: #0e7a0e">+</button>
             </span>
-            
+           
             
             <style>
                 :host {

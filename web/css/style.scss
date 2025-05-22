@@ -135,7 +135,7 @@ footer {
   span {
     font: {
       family: 'concert-one';
-      size: 1vw;
+      size: 1.2vw;
     }
   }
 }
@@ -369,5 +369,14 @@ form {
   font: {
     family: 'concert-one', sans-serif;
     size: 1.7vw;
+  }
+}
+
+.privacy {
+  max-width: 65vw;
+  margin: 5vw auto;
+  font: {
+    family: 'concert-one', sans-serif;
+    size: 2vw;
   }
 }
