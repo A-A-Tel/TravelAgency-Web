@@ -5,7 +5,7 @@ $dark-primary: #00796B;
 $dark-secondary: #004D3E;
 
 $reg-primary: #009688;
-$reg-secondary: #006E59;
+$reg-secondary: #1759A8;
 
 $light-primary: #B2DFDB;
 
@@ -119,6 +119,10 @@ nav {
 
 }
 
+main {
+  min-height: 90vh;
+}
+
 footer {
   display: flex;
   background: $light-primary;
@@ -133,6 +137,23 @@ footer {
       family: 'concert-one';
       size: 1vw;
     }
+  }
+}
+
+form {
+  background: $reg-secondary;
+  width: 60vw;
+  padding: 8vw 10vw;
+  border-radius: 4vw;
+  margin: 10vw auto;
+  color: $text-secondary;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7vw;
+  font: {
+    family: 'concert-one', sans-serif;
+    size: 4.5vw;
   }
 }
 
@@ -301,5 +322,52 @@ footer {
       family: 'concert-one', sans-serif;
       size: 1.5vw;
     }
+  }
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3vw;
+  align-items: center;
+  input, textarea {
+    width: 20vw;
+    height: 3vw;
+    background: $reg-primary;
+    padding: 0 0.5vw;
+    border: {
+      style: solid;
+      color: $accent;
+      width: 0.1vw;
+      radius: 0.6vw;
+    }
+    font: {
+      family: 'concert-one', sans-serif;
+      size: 1.7vw;
+    }
+  }
+  textarea {
+    resize: vertical;
+    width: 35vw;
+    height: 20vw;
+    min-height: 10vw;
+    max-height: 50vw;
+  }
+}
+
+.submit {
+  width: 12vw;
+  height: 4vw;
+  background: $reg-primary;
+  cursor: pointer;
+  border: {
+    style: solid;
+    color: $accent;
+    width: 0.1vw;
+    radius: 0.6vw;
+  }
+  font: {
+    family: 'concert-one', sans-serif;
+    size: 1.7vw;
   }
 }
