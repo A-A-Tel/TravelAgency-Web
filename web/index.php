@@ -16,7 +16,7 @@
     <div class="home-intro">
         <h1>Waar ga jij deze keer heen?</h1>
         <p>
-            Hier bij <b>Reis 2000</b> heb je keuze in allerlei assortimenten. Bekijk met al onze booking-deals of scroll gerust
+            Hier bij <b>Reis2000</b> heb je keuze in allerlei assortimenten. Bekijk met al onze booking-deals of scroll gerust
             verder en ontdek de wereld.
         </p>
     </div>
