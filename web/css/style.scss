@@ -225,11 +225,12 @@ form {
 }
 
 .home-search {
+  margin: 4vw 0 0 0;
   color: $text-primary;
   width: 25vw;
   height: 3.8vw;
   background: #004D3EB2 url("/img/search.svg") no-repeat 1.5vw 0.8vw / 2vw;
-  padding-left: 4.5vw;
+  padding: 0 0 0 4.5vw;
   border: {
     radius: 0.6vw;
     style: solid;
