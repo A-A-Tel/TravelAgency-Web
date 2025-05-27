@@ -5,7 +5,7 @@ $dark-primary: #00796B;
 $dark-secondary: #004D3E;
 
 $reg-primary: #009688;
-$reg-secondary: #006E59;
+$reg-secondary: #1759A8;
 
 $light-primary: #B2DFDB;
 
@@ -119,6 +119,10 @@ nav {
 
 }
 
+main {
+  min-height: 90vh;
+}
+
 footer {
   display: flex;
   background: $light-primary;
@@ -131,8 +135,25 @@ footer {
   span {
     font: {
       family: 'concert-one';
-      size: 1vw;
+      size: 1.2vw;
     }
+  }
+}
+
+form {
+  background: $reg-secondary;
+  width: 60vw;
+  padding: 8vw 10vw;
+  border-radius: 4vw;
+  margin: 10vw auto;
+  color: $text-secondary;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7vw;
+  font: {
+    family: 'concert-one', sans-serif;
+    size: 4.5vw;
   }
 }
 
@@ -204,11 +225,12 @@ footer {
 }
 
 .home-search {
+  margin: 4vw 0 0 0;
   color: $text-primary;
   width: 25vw;
   height: 3.8vw;
   background: #004D3EB2 url("/img/search.svg") no-repeat 1.5vw 0.8vw / 2vw;
-  padding-left: 4.5vw;
+  padding: 0 0 0 4.5vw;
   border: {
     radius: 0.6vw;
     style: solid;
@@ -278,8 +300,9 @@ footer {
 .item-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin: 12vw;
-  row-gap: 9vw;
+  margin: 12vw auto;
+  width: fit-content;
+  gap: 9vw;
 }
 
 .item {
@@ -301,4 +324,158 @@ footer {
       size: 1.5vw;
     }
   }
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3vw;
+  align-items: center;
+  input, textarea {
+    width: 20vw;
+    height: 3vw;
+    background: $reg-primary;
+    padding: 0 0.5vw;
+    border: {
+      style: solid;
+      color: $accent;
+      width: 0.1vw;
+      radius: 0.6vw;
+    }
+    font: {
+      family: 'concert-one', sans-serif;
+      size: 1.7vw;
+    }
+  }
+  textarea {
+    resize: vertical;
+    width: 35vw;
+    height: 20vw;
+    min-height: 10vw;
+    max-height: 50vw;
+  }
+}
+
+.submit {
+  width: 12vw;
+  height: 4vw;
+  background: $reg-primary;
+  cursor: pointer;
+  border: {
+    style: solid;
+    color: $accent;
+    width: 0.1vw;
+    radius: 0.6vw;
+  }
+  font: {
+    family: 'concert-one', sans-serif;
+    size: 1.7vw;
+  }
+}
+
+.privacy {
+  max-width: 65vw;
+  margin: 5vw auto;
+  font: {
+    family: 'concert-one', sans-serif;
+    size: 2vw;
+  }
+}
+
+.main-item {
+  padding: 10vw;
+  h1 {
+    margin: 5vw auto;
+    font: {
+      family: 'concert-one', sans-serif;
+      size: 5vw;
+    }
+  }
+  div[name='review'] {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    div {
+      display: flex;
+      flex-direction: row;
+      div {
+        display: flex;
+        flex-direction: column;
+        margin-left: 1vw;
+        align-items: start;
+        div {
+          display: flex;
+          flex-direction: row;
+          gap: 0.8vw;
+          img {
+            width: 3.5vw;
+          }
+        }
+        span {
+          margin: auto 0 1vw 0;
+          font: {
+            family: 'concert-one', sans-serif;
+            size: 1.5vw;
+          }
+        }
+      }
+    }
+    p {
+      max-width: 30vw;
+      margin-left: 8vw;
+      font: {
+        family: 'concert-one', sans-serif;
+        size: 1.3vw;
+      }
+    }
+    img[alt=review] {
+      width: 7vw;
+      height: 7vw;
+      border-radius: 50%;
+    }
+  }
+}
+
+.item-preview {
+  align-items: center;
+  padding-right: 10vw;
+  img {
+    width: 38vw;
+    height: 38vw;
+  }
+  div {
+    height: 38vw;
+    display: flex;
+    flex-direction: column;
+    padding: 1vw;
+    align-items: center;
+    justify-content: space-between;
+    p {
+      max-width: 30vw;
+      font: {
+        family: 'concert-one', sans-serif;
+        size: 3vw;
+      }
+    }
+    div {
+      display: flex;
+      flex-direction: row;
+      align-items: end;
+      justify-content: center;
+      gap: 5vw;
+      button {
+        width: 15vw;
+        height: 8vw;
+        border-radius: 0.6vw;
+        font: {
+          family: 'concert-one', sans-serif;
+          size: 2.5vw;
+        }
+      }
+    }
+  }
+}
+
+.flex-center {
+  align-items: center;
 }

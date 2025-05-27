@@ -1,29 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Account</title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="shortcut icon" href="/img/favicon.svg" type="image/x-icon">
 </head>
 <body>
-<header>
-    <button class="mode-button"></button>
-    <nav>
-        <button onclick="rd('/')" class="nav-button">Start</button>
-        <button onclick="rd('/about/')" class="nav-button">Over</button>
-        <button onclick="rd('/locations/')" class="nav-button">Locaties</button>
-    </nav>
-    <a href="/"><img src="/img/logo.png" alt="logo"></a>
-    <nav>
-        <button class="nav-button">Booken</button>
-        <button class="nav-button">Contact</button>
-        <button class="nav-button login-button">Login</button>
-    </nav>
-    <img src="/img/avatar-placeholder.png" alt="avatar" class="avatar">
-</header>
+<?php
+include getenv("WEB_ROOT") . "/php/templates/header.php";
+?>
 
-<main>
+<main class="column flex-center">
+    <div class="row item-preview">
+        <img src="/img/placeholder.svg" alt="item">
+        <div>
+            <p>
+                Naam: Lorem
+                <br>
+                Geboortedatum: Ipsum
+                <br>
+                Email: Dolor
+                <br>
+                Wachtwoord: ****
+            </p>
+            <div>
+                <button style="background: #F00">Verwijder</button>
+                <button style="background: #FF8800">Bewerk</button>
+            </div>
+        </div>
+    </div>
+
+
     <div class="item-grid">
         <div class="item">
             <div></div>
@@ -62,15 +70,10 @@
             <span>Egypte</span>
         </div>
     </div>
-
 </main>
 
-<footer>
-    <span>Icons by <a target="_blank" href="https://icons8.com">Icons8</a></span>
-    <span>Reis 2000 © Copyright 2025</span>
-    <span class="hidden">Icons by <a href="https://icons8.com">Icons8</a></span>
-</footer>
-
-<script src="/js/main.js"></script>
+<?php
+include getenv("WEB_ROOT") . "/php/templates/footer.php";
+?>
 </body>
 </html>

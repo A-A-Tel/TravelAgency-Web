@@ -6,17 +6,18 @@ services:
       context: web/
     restart: no
     ports:
-      - "1000:80"
+      - "8000:80"
     volumes:
-      - ./web:/var/www/html
+      - ./web:${WEB_ROOT}
     depends_on:
       - db
     environment:
       DB_HOST: db
       DB_PORT: 3306
-      DB_NAME: travel_data
+      DB_NAME: ${TRAVEL_DATA}
       DB_USER: ${DB_USER}
       DB_PASS: ${DB_PASS}
+      WEB_ROOT: ${WEB_ROOT}
 
 
   db:
@@ -25,7 +26,7 @@ services:
     build:
       context: ./db/
     environment:
-      MYSQL_DATABASE: travel_data
+      MYSQL_DATABASE: ${TRAVEL_DATA}
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASS}
       MYSQL_ROOT_PASSWORD: ${DB_ROOT}
