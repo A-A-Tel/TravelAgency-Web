@@ -13,19 +13,19 @@ include getenv('WEB_ROOT') . "/php/templates/header.php";
 ?>
 
 <main class="row align-center justify-center">
-    <a href="">
+    <a href="//">
         <div class="admin-item">
             <img src="/img/books.png" alt="books">
             <span>Boekings</span>
         </div>
     </a>
-    <a>
+    <a href="#">
         <div class="admin-item">
             <img src="/img/airport.png" alt="planes :D">
             <span>Reizen beheren</span>
         </div>
     </a>
-    <a>
+    <a href="#">
         <div class="admin-item">
             <img src="/img/scammers.png" alt="scammers">
             <span>Contact</span>

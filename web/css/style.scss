@@ -2,7 +2,7 @@ $accent: #00FFA2;
 $background: #DDFFE0;
 
 $dark-primary: #00796B;
-$dark-secondary: #004D3E;
+$dark-secondary: #b2dfda;
 
 $reg-primary: #009688;
 $reg-secondary: #1759A8;
@@ -503,4 +503,36 @@ form {
     height: 20vw;
     background: #B2DFDB;
   }
+}
+
+.booking-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: $dark-secondary;
+  gap: 3vw 1vw;
+  border-radius: 1vw;
+  width: 30vw;
+  height: fit-content;
+  padding: 2vw;
+  font: {
+    family: 'concert-one', sans-serif;
+    size: 1.2vw;
+  }
+  p {
+    max-width: 24vw;
+  }
+  button {
+    background: #e12a37;
+    padding: 1vw;
+    border-radius: 0.6vw;
+    font: {
+      family: 'concert-one', sans-serif;
+      size: 1.2vw;
+    }
+  }
+}
+
+.grid-wrap {
+  grid-template-columns: repeat(2, 1fr);
 }
