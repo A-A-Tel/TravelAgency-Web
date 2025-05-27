@@ -8,7 +8,7 @@
     </nav>
     <a href="/"><img src="/img/logo.png" alt="logo"></a>
     <nav>
-        <button onclick="rd('/booking/')" class="nav-button">Booken</button>
+        <button onclick="rd('/booking/')" class="nav-button">Boeken</button>
         <button onclick="rd('/contact/')" class="nav-button">Contact</button>
         <button onclick="rd('/login/')" class="nav-button login-button">Login</button>
     </nav>
