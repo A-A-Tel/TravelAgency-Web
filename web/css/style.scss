@@ -505,7 +505,7 @@ form {
   }
 }
 
-.booking-info {
+.item-info {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -523,13 +523,16 @@ form {
     max-width: 24vw;
   }
   button {
-    background: #e12a37;
     padding: 1vw;
     border-radius: 0.6vw;
     font: {
       family: 'concert-one', sans-serif;
       size: 1.2vw;
     }
+  }
+  span {
+    display: flex;
+    gap: 5vw;
   }
 }
 
