@@ -33,7 +33,18 @@ CREATE TABLE IF NOT EXISTS `bookings`
     `id`         BIGINT    NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `user_id`    BIGINT    NOT NULL,
     `travel_id`  BIGINT    NOT NULL,
-    `date`       DATE      NOT NULL,
+    `begin_date` DATE      NOT NULL,
+    `end_date`   DATE      NOT NULL,
     `approved`   BOOLEAN   NOT NULL DEFAULT FALSE,
     `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS `reviews`
+(
+    `id`         BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `user_id`    BIGINT       NOT NULL,
+    `travel_id`  BIGINT       NOT NULL,
+    `score`      TINYINT(4)   NOT NULL,
+    `content`    VARCHAR(120) NOT NULL,
+    `created_at` TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
