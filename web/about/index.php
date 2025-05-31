@@ -8,7 +8,7 @@
 </head>
 <body>
 <?php
-include getenv("WEB_ROOT") . "/php/templates/header.php";
+include getenv("WEB_ROOT") . "php/templates/header.php";
 ?>
 
 <main class="main about-main column">
@@ -53,7 +53,7 @@ include getenv("WEB_ROOT") . "/php/templates/header.php";
 </main>
 
 <?php
-include getenv("WEB_ROOT") . "/php/templates/footer.php";
+include getenv("WEB_ROOT") . "php/templates/footer.php";
 ?>
 </body>
 </html>

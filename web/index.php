@@ -9,7 +9,7 @@
 </head>
 <body>
 <?php
-    include getenv("WEB_ROOT") . "/php/templates/header.php";
+    include getenv("WEB_ROOT") . "php/templates/header.php";
 ?>
 
 <main class="main home-main">
@@ -26,7 +26,7 @@
 </main>
 
 <?php
-    include getenv("WEB_ROOT") . "/php/templates/footer.php";
+    include getenv("WEB_ROOT") . "php/templates/footer.php";
 ?>
 
 <script src="/js/main.js"></script>

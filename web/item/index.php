@@ -10,7 +10,7 @@
 <body>
 
 <?php
-    include getenv("WEB_ROOT") . "/php/templates/header.php";
+    include getenv("WEB_ROOT") . "php/templates/header.php";
 ?>
 
 <main class="column main-item">
@@ -61,7 +61,7 @@
 </main>
 
 <?php
-    include getenv("WEB_ROOT") . "/php/templates/footer.php";
+    include getenv("WEB_ROOT") . "php/templates/footer.php";
 ?>
 
 </body>
