@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `travels`
 CREATE TABLE IF NOT EXISTS `bookings`
 (
     `id`         BIGINT    NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `booker_id`  BIGINT    NOT NULL,
+    `user_id`  BIGINT    NOT NULL,
     `travel_id`  BIGINT    NOT NULL,
     `date`       DATE      NOT NULL,
     `approved`   BOOLEAN   NOT NULL DEFAULT FALSE,
