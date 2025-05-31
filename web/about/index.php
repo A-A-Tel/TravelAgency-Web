@@ -15,7 +15,7 @@ include getenv("WEB_ROOT") . "/php/templates/header.php";
     <div class="about-description">
         <h1>Wat is Reis2000?</h1>
         <p>
-            Reis2000 is een reis platform waarbij wij zorgen dat de passagier zo snel en veilig mogelijk aan komt op uw
+            Reis2000 is een reis platform waarbij wij zorgen dat de reiziger zo snel en veilig mogelijk aan komt op uw
             bestemming
         </p>
     </div>
