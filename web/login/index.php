@@ -1,3 +1,5 @@
+<?php session_start() ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,16 +15,20 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
 ?>
 
 <main>
-    <form action="">
+    <form method="POST">
         <div class="form-item">
             <h2>Email</h2>
-            <input type="text" name="naam" placeholder="Invoer..." required>
+            <input type="email" name="email" placeholder="Invoer..." required>
         </div>
         <div class="form-item">
             <h2>Wachtwoord</h2>
-            <input type="password" name="naam" placeholder="Invoer..." required>
+            <input type="password" name="pass" placeholder="Invoer..." required>
         </div>
-        <input type="submit" value="Inloggen" class="submit">
+
+        <span class="row gap-5vw">
+            <a class="submit" href="/register/">Registreren</a>
+            <input type="submit" value="Inloggen" class="submit" formaction="/php/process/login.php">
+        </span>
     </form>
 </main>
 

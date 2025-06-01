@@ -1,3 +1,5 @@
+<?php session_start() ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,7 +14,7 @@
 include getenv("WEB_ROOT") . "php/templates/header.php";
 ?>
 
-<main class="column flex-center">
+<main class="column flex-center margin-vertical">
     <div class="row item-preview">
         <img src="/img/placeholder.svg" alt="item">
         <div>

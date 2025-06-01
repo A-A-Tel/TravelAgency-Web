@@ -361,6 +361,9 @@ form {
   height: 4vw;
   background: $reg-primary;
   cursor: pointer;
+  display: grid;
+  place-items: center;
+  color: $text-primary;
   border: {
     style: solid;
     color: $accent;
@@ -538,4 +541,12 @@ form {
 
 .grid-wrap {
   grid-template-columns: repeat(2, 1fr);
+}
+
+.gap-5vw {
+  gap: 5vw;
+}
+
+.margin-vertical {
+  margin: 10vw 0;
 }
