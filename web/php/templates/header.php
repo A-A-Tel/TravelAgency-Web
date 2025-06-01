@@ -1,3 +1,16 @@
+<?php
+if (isset($_SESSION["valid"]) && $_SESSION["valid"])
+{
+    $login_button = "<button onclick='rd(`/account/`)' class='nav-button login-button'>Account</button>";
+    $avatar_path = "/img/user-items/{$_SESSION['id']}";
+}
+else
+{
+    $login_button = "<button onclick='rd(`/login/`)' class='nav-button login-button'>Login</button>";
+    $avatar_path = "/img/avatar-placeholder.png";
+}
+?>
+
 <script src="/js/main.js"></script>
 <header>
     <button class="mode-button"></button>
@@ -10,7 +23,7 @@
     <nav>
         <button onclick="rd('/booking/')" class="nav-button">Boeken</button>
         <button onclick="rd('/contact/')" class="nav-button">Contact</button>
-        <button onclick="rd('/login/')" class="nav-button login-button">Login</button>
+        <?php echo $login_button; ?>
     </nav>
-    <img src="/img/avatar-placeholder.png" alt="avatar" class="avatar">
+    <img src="<?php echo $avatar_path ?>" alt="avatar" class="avatar">
 </header>

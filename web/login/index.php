@@ -1,3 +1,5 @@
+<?php session_start() ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,7 +26,7 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
         </div>
 
         <span class="row gap-5vw">
-            <input type="submit" value="Registreren " class="submit" formaction="/php/process/register.php">
+            <a class="submit" href="/register/">Registreren</a>
             <input type="submit" value="Inloggen" class="submit" formaction="/php/process/login.php">
         </span>
     </form>

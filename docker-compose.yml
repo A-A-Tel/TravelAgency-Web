@@ -1,9 +1,12 @@
 services:
   web:
-    image: php:8.0-apache
+    image: php:8.4-rc-apache
     container_name: travel_web
     build:
       context: web/
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
     restart: no
     ports:
       - "8000:80"

@@ -361,6 +361,9 @@ form {
   height: 4vw;
   background: $reg-primary;
   cursor: pointer;
+  display: grid;
+  place-items: center;
+  color: $text-primary;
   border: {
     style: solid;
     color: $accent;

@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS `users`
     `id`         BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name`       VARCHAR(64)  NOT NULL,
     `email`      VARCHAR(320) NOT NULL UNIQUE,
-    `pass`       VARCHAR(256) NOT NULL,
+    `pass`       VARCHAR(60)  NOT NULL,
     `admin`      BOOLEAN      NOT NULL DEFAULT FALSE,
     `created_at` TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
