@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
             $avatar["error"] != 0
         )
         {
-            $alert_message = "Invalid input.";
+            $alert_message = "Invalid input";
         }
         else
         {

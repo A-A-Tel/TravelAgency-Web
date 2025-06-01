@@ -48,3 +48,12 @@ CREATE TABLE IF NOT EXISTS `reviews`
     `content`    VARCHAR(120) NOT NULL,
     `created_at` TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE IF NOT EXISTS `contact`
+(
+    `id`         BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `name`       VARCHAR(64)  NOT NULL,
+    `email`      VARCHAR(320) NOT NULL,
+    `message`    TEXT         NOT NULL,
+    `created_at` TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
+)

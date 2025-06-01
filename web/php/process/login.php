@@ -2,9 +2,10 @@
 
 namespace process;
 
+require_once "../classes/db.php";
+
 use classes\db;
 
-require_once "../classes/db.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
