@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
             $_SESSION["id"] = $user["id"];
             $_SESSION["name"] = $user["name"];
             $_SESSION["email"] = $user["email"];
-            $_SESSION["admin"] = (bool)$user["admin"];
+            $_SESSION["admin"] = $user["admin"];
         }
     }
 }

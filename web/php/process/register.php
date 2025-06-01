@@ -3,6 +3,7 @@
 namespace process;
 
 require_once "../classes/db.php";
+
 use classes\db;
 
 
@@ -44,8 +45,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
             $stmt = $pdo->prepare("SELECT * FROM `users` WHERE email = :email");
             $stmt->execute(["email" => $email]);
             $user = $stmt->fetch();
+            $avatar["name"] = $user["id"];
 
-            move_uploaded_file($avatar["tmp_name"], getenv("WEB_ROOT") . "img/user-items/{$user['id']}");
+
+            move_uploaded_file($avatar["tmp_name"], getenv("WEB_ROOT") . "img/user-items/" . basename($avatar["name"]));
 
             $alert_message = "Registration successful, please log in.";
         }
