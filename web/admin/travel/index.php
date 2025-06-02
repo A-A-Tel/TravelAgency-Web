@@ -1,4 +1,19 @@
-<?php session_start() ?>
+<?php
+
+require_once getenv("WEB_ROOT") . "php/classes/db.php";
+
+use classes\db;
+
+session_start();
+
+if (!isset($_SESSION['valid']) || !$_SESSION['valid'] || !$_SESSION['admin'])
+{
+    header("Location: /login/");
+    exit;
+}
+$pdo = new db()->getPdo();
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -31,21 +46,35 @@ include getenv('WEB_ROOT') . "php/templates/header.php";
                 <button style="background: #ff8700;">Bewerk</button>
             </span>
         </div>
-        <div class="item-info">
-            <p>
-                Naam: Lorem
-                <br>
-                Locatie: Ipsum
-                <br>
-                Prijs: €Dolor,sit
-                <br>
-                Beschrijving: amet...
-            </p>
-            <span>
-                <button style="background: #e12a37;">Verwijder</button>
-                <button style="background: #ff8700;">Bewerk</button>
-            </span>
+    </div>
+
+    <div class="item-grid">
+
+        <div class="item">
+            <div></div>
+        <a href="/admin/add-location/">Nieuwe locatie</a>
         </div>
+
+
+        <?php
+
+        $template = "
+        
+        <div class=\"item\">
+            <div style=\"background: #000 url('/img/location-items/%s') no-repeat center / 100%% 100%%\"></div>
+            <span>%s</span>
+        </div>
+        ";
+
+        $rows = $pdo->query("SELECT * FROM locations");
+
+        foreach ($rows as $row)
+        {
+            echo sprintf($template, $row['id'], $row['name']);
+        }
+
+        ?>
+
     </div>
 </main>
 

@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `users`
 CREATE TABLE IF NOT EXISTS `locations`
 (
     `id`         BIGINT      NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `name`       VARCHAR(32) NOT NULL,
+    `name`       VARCHAR(32) NOT NULL UNIQUE,
     `created_at` TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -55,5 +55,6 @@ CREATE TABLE IF NOT EXISTS `contact`
     `name`       VARCHAR(64)  NOT NULL,
     `email`      VARCHAR(320) NOT NULL,
     `message`    TEXT         NOT NULL,
+    `answered`   BOOLEAN      NOT NULL DEFAULT FALSE,
     `created_at` TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
 )

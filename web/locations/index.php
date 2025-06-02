@@ -15,42 +15,29 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
 
 <main>
     <div class="item-grid">
-        <div class="item">
-            <div></div>
-            <span>Nederland</span>
+
+        <?php
+
+        require_once getenv("WEB_ROOT") . "php/classes/db.php";
+
+        use classes\db;
+
+        $pdo = new db()->getPdo();
+        $rows = $pdo->query("SELECT * FROM locations");
+
+        $template = "
+        <div class=\"item\">
+            <div style=\"background: #000 url('/img/location-items/%s') no-repeat center / 100%% 100%%\"></div>
+            <span>%s</span>
         </div>
-        <div class="item">
-            <div></div>
-            <span>Griekenland</span>
-        </div>
-        <div class="item">
-            <div></div>
-            <span>Noorwegen</span>
-        </div>
-        <div class="item">
-            <div></div>
-            <span>Mexico</span>
-        </div>
-        <div class="item">
-            <div></div>
-            <span>Brazilië</span>
-        </div>
-        <div class="item">
-            <div></div>
-            <span>Argentinië</span>
-        </div>
-        <div class="item">
-            <div></div>
-            <span>India</span>
-        </div>
-        <div class="item">
-            <div></div>
-            <span>Spanje</span>
-        </div>
-        <div class="item">
-            <div></div>
-            <span>Egypte</span>
-        </div>
+        ";
+
+        foreach ($rows as $row)
+        {
+            echo sprintf($template, $row["id"], $row["name"]);
+        }
+        ?>
+
     </div>
 
 </main>

@@ -315,10 +315,11 @@ form {
     background: $accent;
     border: 0;
   }
-  span {
+  span, a {
     color: $text-primary;
     display: block;
     margin-top: 2vw;
+    text-decoration: underline;
     font: {
       family: 'concert-one', sans-serif;
       size: 1.5vw;

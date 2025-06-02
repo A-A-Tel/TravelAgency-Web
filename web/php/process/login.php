@@ -21,22 +21,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     {
         $alert_message = "Invalid input";
     }
+    else if (!password_verify($pass, $user["pass"]))
+    {
+        $alert_message = "Invalid input";
+    }
     else
     {
-        if (!password_verify($pass, $user["pass"]))
-        {
-            $alert_message = "Invalid input";
-        }
-        else
-        {
-            $alert_message = "Login successful";
-            session_start();
-            $_SESSION["valid"] = true;
-            $_SESSION["id"] = $user["id"];
-            $_SESSION["name"] = $user["name"];
-            $_SESSION["email"] = $user["email"];
-            $_SESSION["admin"] = $user["admin"];
-        }
+        $alert_message = "Login successful";
+        session_start();
+        $_SESSION["valid"] = true;
+        $_SESSION["id"] = $user["id"];
+        $_SESSION["name"] = $user["name"];
+        $_SESSION["email"] = $user["email"];
+        $_SESSION["admin"] = $user["admin"];
     }
 }
 else
