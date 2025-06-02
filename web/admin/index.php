@@ -1,4 +1,12 @@
-<?php session_start() ?>
+<?php
+session_start();
+
+if (!isset($_SESSION['valid']) || !$_SESSION['valid'] || !$_SESSION['admin'])
+{
+    header("Location: /login/");
+    exit;
+}
+?>
 
 <!doctype html>
 <html lang="en">
@@ -27,7 +35,7 @@ include getenv('WEB_ROOT') . "php/templates/header.php";
             <span>Reizen beheren</span>
         </div>
     </a>
-    
+
     <a href="/admin/contact/">
         <div class="admin-item">
             <img src="/img/scammers.png" alt="scammers">

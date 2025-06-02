@@ -1,4 +1,16 @@
-<?php session_start() ?>
+<?php
+require_once getenv('WEB_ROOT') . "php/classes/db.php";
+
+use classes\db;
+
+session_start();
+
+if (!isset($_SESSION['valid']) || !$_SESSION['valid'] || !$_SESSION['admin'])
+{
+    header("Location: /login/");
+    exit;
+}
+?>
 
 <!doctype html>
 <html lang="en">
@@ -16,40 +28,40 @@ include getenv('WEB_ROOT') . "php/templates/header.php";
 ?>
 <main>
     <div class="item-grid grid-wrap">
+
+
+        <?php
+
+
+        $template = '
         <div class="item-info">
             <p>
-                Datum/Tijd: xx-xx-xxxx/xx:xx
+                Datum/Tijd: %s
                 <br>
-                Naam: Lorem
+                Naam: %s
                 <br>
-                Email: ipsum@dolor.sit
+                Email: %s
                 <br>
                 Bericht:
                 <br>
-                amet consectetur adipiscing elit
+                %s
             </p>
             <span>
                 <button style="background: #e12a37;">Verwijder</button>
                 <button style="background: #27d39b;">Beantwoord</button>
             </span>
         </div>
-        <div class="item-info">
-            <p>
-                Datum/Tijd: xx-xx-xxxx/xx:xx
-                <br>
-                Naam: Lorem
-                <br>
-                Email: ipsum@dolor.sit
-                <br>
-                Bericht:
-                <br>
-                amet consectetur adipiscing elit
-            </p>
-            <span>
-                <button style="background: #e12a37;">Verwijder</button>
-                <button style="background: #27d39b;">Beantwoord</button>
-            </span>
-        </div>
+        ';
+
+        $pdo = new db()->getPdo();
+        $rows = $pdo->query("SELECT * FROM `contact` ORDER BY `created_at`")->fetchAll();
+
+        foreach ($rows as $row)
+        {
+            echo sprintf($template, $row['created_at'], $row['name'], $row['email'], $row['message']);
+        }
+
+        ?>
     </div>
 </main>
 <?php
