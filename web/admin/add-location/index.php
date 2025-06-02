@@ -25,7 +25,7 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
     <form action="/php/process/add_location.php" method="POST" enctype='multipart/form-data'>
         <div class="form-item">
             <h2>Naam</h2>
-            <input type="text" name="name" placeholder="Invoer hier.." required>
+            <input type="text" name="name" placeholder="Invoer hier.." required maxlength="32">
         </div>
         <div class="form-item">
             <h2>Afbeelding</h2>

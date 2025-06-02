@@ -23,8 +23,7 @@ CREATE TABLE IF NOT EXISTS `travels`
     `location_id` BIGINT       NOT NULL,
     `name`        VARCHAR(32)  NOT NULL UNIQUE,
     `description` VARCHAR(140) NOT NULL,
-    `price_int`   INT          NOT NULL,
-    `price_dec`   INT          NOT NULL,
+    `price`       VARCHAR(10)  NOT NULL,
     `created_at`  TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

@@ -14,7 +14,7 @@ if (!isset($_SESSION['valid']) || !$_SESSION['valid'] || !$_SESSION['admin'])
 
 if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
-    $pdo = new db()->getPdo();
+    $pdo = new db()->pdo;
 
     $name = $_POST["name"];
     $image = $_FILES["image"];
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     }
     else if
     (
-        !preg_match("/^[\p{L}\p{N}\p{P}\p{S}\p{Z}]+$/u", $name) ||
+        !preg_match("/^[\p{L}\p{N}\p{P}\p{S}\p{Z}]{1,32}$/u", $name) ||
         $image["error"] != 0
     )
     {

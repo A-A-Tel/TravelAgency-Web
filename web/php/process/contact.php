@@ -9,7 +9,7 @@ use classes\db;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
-    $pdo = new db()->getPdo();
+    $pdo = new db()->pdo;
 
     $name = $_POST["name"];
     $email = $_POST["email"];

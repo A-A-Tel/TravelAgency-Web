@@ -7,7 +7,11 @@ use PDO;
 class db
 {
 
-    private PDO $pdo;
+    public PDO $pdo {
+        get {
+            return $this->pdo;
+        }
+    }
 
     public function __construct()
     {
@@ -17,10 +21,5 @@ class db
         $pass = getenv('DB_PASS');
 
         $this->pdo = new PDO("mysql:host=$host;dbname=$name", $user, $pass);
-    }
-
-    public function getPdo(): PDO
-    {
-        return $this->pdo;
     }
 }

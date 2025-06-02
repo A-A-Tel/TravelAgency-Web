@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     $pass = $_POST["pass"];
     $avatar = $_FILES["avatar"];
 
-    $pdo = new db()->getPdo();
+    $pdo = new db()->pdo;
     $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
     $stmt->execute(["email" => $email]);
     $user = $stmt->fetch();

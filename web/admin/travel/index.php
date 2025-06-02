@@ -11,7 +11,7 @@ if (!isset($_SESSION['valid']) || !$_SESSION['valid'] || !$_SESSION['admin'])
     header("Location: /login/");
     exit;
 }
-$pdo = new db()->getPdo();
+$pdo = new db()->pdo;
 
 ?>
 
@@ -32,29 +32,52 @@ include getenv('WEB_ROOT') . "php/templates/header.php";
 <main>
     <div class="item-grid grid-wrap">
         <div class="item-info">
+            <img src="/img/placeholder.svg" alt="placeholder">
             <p>
-                Naam: Lorem
+                Voeg een nieuwe reis toe!
+            </p>
+            <a href="/admin/add-travel" style="background: #1aa377;" >Toevoegen</a>
+        </div>
+
+        <?php
+
+        $template = '
+        <div class="item-info">
+        <img src="/img/travel-items/%s" alt="image">
+            <p>
+                Naam: %s
                 <br>
-                Locatie: Ipsum
+                Locatie: %s
                 <br>
-                Prijs: €Dolor,sit
+                Prijs: %s
                 <br>
-                Beschrijving: amet...
+                Beschrijving: %s
             </p>
             <span>
                 <button style="background: #e12a37;">Verwijder</button>
                 <button style="background: #ff8700;">Bewerk</button>
             </span>
         </div>
+        ';
+        $rows = $pdo->query("SELECT * FROM travels")->fetchAll();
+
+        foreach ($rows as $row)
+        {
+            $stmt = $pdo->prepare("SELECT * FROM locations WHERE id=:id");
+            $stmt->execute(['id' => $row['location_id']]);
+            $location_name = $stmt->fetch()['name'];
+            echo sprintf($template, $row['id'], $row['name'], $location_name, $row['price'], $row["description"]);
+        }
+
+        ?>
     </div>
 
     <div class="item-grid">
 
         <div class="item">
             <div></div>
-        <a href="/admin/add-location/">Nieuwe locatie</a>
+            <a href="/admin/add-location/">Nieuwe locatie</a>
         </div>
-
 
         <?php
 

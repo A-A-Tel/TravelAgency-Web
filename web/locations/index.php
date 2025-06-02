@@ -22,7 +22,7 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
 
         use classes\db;
 
-        $pdo = new db()->getPdo();
+        $pdo = new db()->pdo;
         $rows = $pdo->query("SELECT * FROM locations");
 
         $template = "

@@ -53,7 +53,7 @@ include getenv('WEB_ROOT') . "php/templates/header.php";
         </div>
         ';
 
-        $pdo = new db()->getPdo();
+        $pdo = new db()->pdo;
         $rows = $pdo->query("SELECT * FROM `contact` ORDER BY `created_at`")->fetchAll();
 
         foreach ($rows as $row)
