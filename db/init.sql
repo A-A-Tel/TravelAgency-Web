@@ -1,3 +1,7 @@
+ALTER USER 'user'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON your_database.* TO 'user'@'%';
+FLUSH PRIVILEGES;
+
 USE `travel_data`;
 
 CREATE TABLE IF NOT EXISTS `users`
