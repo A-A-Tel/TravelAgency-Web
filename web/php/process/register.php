@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         $user = $stmt->fetch();
         $avatar["name"] = $user["id"];
 
-        move_uploaded_file($avatar["tmp_name"], getenv("WEB_ROOT") . "img/location-items/" . basename($avatar["name"]));
+        move_uploaded_file($avatar["tmp_name"], getenv("WEB_ROOT") . "img/user-items/" . basename($avatar["name"]));
 
         $alert_message = "Registration successful, please log in.";
     }

@@ -1,4 +1,6 @@
-<?php session_start() ?>
+<?php
+
+session_start() ?>
 
 <!doctype html>
 <html lang="en">
@@ -17,9 +19,25 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
 
 <main>
     <div class="item-grid">
-        <booking-item id="1" price="12,34" loc="Griekenland" name="Athene"></booking-item>
-        <booking-item id="2" price="12,34" loc="Rusland" name="Moscow"></booking-item>
-        <booking-item id="3" price="12,34" loc="Nigeria" name="Abuja"></booking-item>
+        <?php
+
+        require_once getenv("WEB_ROOT") . "php/classes/db.php";
+        use classes\db;
+
+
+        $pdo = new db()->pdo;
+
+        $rows = $pdo->query("SELECT * FROM travels")->fetchAll();
+        $template =  "<booking-item id='%s' loc='%s' name='%s' price='%s'></booking-item>";
+
+        foreach ($rows as $row) {
+            $stmt = $pdo->prepare("SELECT * FROM locations WHERE id=:id");
+            $stmt->execute([":id" => $row["location_id"]]);
+            $location_name = $stmt->fetch()["name"];
+            echo sprintf($template, $row["id"], $location_name, $row["name"], $row["price"]);
+        }
+
+        ?>
     </div>
 </main>
 

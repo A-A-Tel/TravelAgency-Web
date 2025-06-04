@@ -1,5 +1,6 @@
+CREATE USER IF NOT EXISTS `user`;
 ALTER USER 'user'@'%' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON your_database.* TO 'user'@'%';
+GRANT ALL PRIVILEGES ON travel_data.* TO 'user'@'%';
 FLUSH PRIVILEGES;
 
 USE `travel_data`;

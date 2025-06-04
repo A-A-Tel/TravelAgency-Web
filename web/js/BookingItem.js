@@ -28,7 +28,7 @@ class BookingItem extends HTMLElement {
                 :host div {
                     width: 20vw;
                     height: 20vw;
-                    background: #004D3E url('${"/img/contact-items/" + (this.id !== "" ? this.id : "../placeholder.svg")}') no-repeat center / 100%;
+                    background: #004D3E url('${"/img/travel-items/" + (this.id !== "" ? this.id : "../placeholder.svg")}') no-repeat center / 100% 100%;
                     overflow: hidden;
                 }
                 :host div::after {

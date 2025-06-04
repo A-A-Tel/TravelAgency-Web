@@ -3,9 +3,6 @@ services:
     container_name: travel_web
     build:
       context: web/
-      args:
-        - UID=${UID:-1000}
-        - GID=${GID:-1000}
     restart: no
     ports:
       - "8000:80"
@@ -25,6 +22,8 @@ services:
   db:
     restart: no
     image: mysql:latest
+    ports:
+      - "3306:3306"
     environment:
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USER}
