@@ -2,3 +2,8 @@
 function rd(href) {
     window.location.href = href;
 }
+
+// Travel submitting to enter the /item/ page
+function travelSubmit(travel_id) {
+
+}

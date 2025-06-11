@@ -13,6 +13,7 @@ session_start() ?>
 </head>
 <body>
 <script src="/js/BookingItem.js"></script>
+<div id="forms"></div>
 <?php
 include getenv("WEB_ROOT") . "php/templates/header.php";
 ?>

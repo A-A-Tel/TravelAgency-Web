@@ -1,6 +1,26 @@
-<?php session_start() ?>
+<?php
+session_start();
 
-<!doctype html>
+if ($_SERVER["REQUEST_METHOD"] === "GET")
+{
+    $travel_id = $_POST["travel_id"];
+
+    if
+    (
+            !preg_match("/^[0-9]+$/", $travel_id)
+    )
+    {
+
+    }
+}
+else
+{
+    header("location: /booking/");
+}
+
+?>
+
+z<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +32,7 @@
 <body>
 
 <?php
-    include getenv("WEB_ROOT") . "php/templates/header.php";
+include getenv("WEB_ROOT") . "php/templates/header.php";
 ?>
 
 <main class="column main-item">
@@ -63,7 +83,7 @@
 </main>
 
 <?php
-    include getenv("WEB_ROOT") . "php/templates/footer.php";
+include getenv("WEB_ROOT") . "php/templates/footer.php";
 ?>
 
 </body>

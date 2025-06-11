@@ -8,9 +8,11 @@ class BookingItem extends HTMLElement {
 
     connectedCallback() {
 
+        const forms = document.getElementById("forms");
+
         this._shadow.innerHTML = `
             
-            <div></div>
+            <a href="/item/?id=${this.id}"></a>
             <h2>${this.getAttribute("loc") ?? "Lorem"} - ${this.getAttribute("name") ?? "ipsum"}</h2>
             <span>
                 <button style="background: #F00">-</button>
@@ -25,13 +27,14 @@ class BookingItem extends HTMLElement {
                     flex-direction: column;
                     align-items: center;
                 }
-                :host div {
+                :host a {
                     width: 20vw;
                     height: 20vw;
                     background: #004D3E url('${"/img/travel-items/" + (this.id !== "" ? this.id : "../placeholder.svg")}') no-repeat center / 100% 100%;
                     overflow: hidden;
+                    color: inherit;
                 }
-                :host div::after {
+                :host a::after {
                     content: '${"€" + (this.getAttribute("price") ?? "XX,XX")}';
                     position: relative;
                     width: 10vw;
