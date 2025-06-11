@@ -12,7 +12,7 @@ class BookingItem extends HTMLElement {
 
         this._shadow.innerHTML = `
             
-            <a href="/item/?id=${this.id}"></a>
+            <button href="/item/?id=${this.id}"></button>
             <h2>${this.getAttribute("loc") ?? "Lorem"} - ${this.getAttribute("name") ?? "ipsum"}</h2>
             <span>
                 <button style="background: #F00">-</button>
@@ -26,15 +26,20 @@ class BookingItem extends HTMLElement {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
                 }
-                :host a {
+                :host button {
                     width: 20vw;
                     height: 20vw;
                     background: #004D3E url('${"/img/travel-items/" + (this.id !== "" ? this.id : "../placeholder.svg")}') no-repeat center / 100% 100%;
                     overflow: hidden;
                     color: inherit;
+                    border: none;
+                    cursor: pointer;
                 }
-                :host a::after {
+                :host button::after {
                     content: '${"€" + (this.getAttribute("price") ?? "XX,XX")}';
                     position: relative;
                     width: 10vw;
@@ -42,7 +47,7 @@ class BookingItem extends HTMLElement {
                     background: #00FFA2;
                     border-radius: 50%;
                     left: 11.5vw;
-                    top: 11.5vw;
+                    top: 7vw;
                     display: grid;
                     place-items: center;
                     font-family: 'concert-one', sans-serif;
@@ -57,7 +62,7 @@ class BookingItem extends HTMLElement {
                     gap: 5vw;
                     
                 }
-                :host button {
+                :host span button {
                     border: none;
                     border-radius: 4vw;
                     outline: none;

@@ -12,8 +12,8 @@ session_start() ?>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+
 <script src="/js/BookingItem.js"></script>
-<div id="forms"></div>
 <?php
 include getenv("WEB_ROOT") . "php/templates/header.php";
 ?>
