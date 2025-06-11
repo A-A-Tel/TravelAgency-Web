@@ -32,10 +32,10 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
         $template =  "<booking-item id='%s' loc='%s' name='%s' price='%s'></booking-item>";
 
         foreach ($rows as $row) {
-            $stmt = $pdo->prepare("SELECT * FROM locations WHERE id=:id");
+            $stmt = $pdo->prepare("SELECT * FROM locations WHERE location_id=:id");
             $stmt->execute([":id" => $row["location_id"]]);
             $location_name = $stmt->fetch()["name"];
-            echo sprintf($template, $row["id"], $location_name, $row["name"], $row["price"]);
+            echo sprintf($template, $row["travel_id"], $location_name, $row["name"], $row["price"]);
         }
 
         ?>

@@ -12,7 +12,7 @@ class BookingItem extends HTMLElement {
 
         this._shadow.innerHTML = `
             
-            <button href="/item/?id=${this.id}"></button>
+            <button onclick="travelSubmit(${this.id})""></button>
             <h2>${this.getAttribute("loc") ?? "Lorem"} - ${this.getAttribute("name") ?? "ipsum"}</h2>
             <span>
                 <button style="background: #F00">-</button>
@@ -56,6 +56,7 @@ class BookingItem extends HTMLElement {
                 :host h2 {
                     font-family: 'concert-one', sans-serif;
                     font-size: 1.7vw;
+                    text-align: center;
                 }
                 :host span {
                     display: flex;

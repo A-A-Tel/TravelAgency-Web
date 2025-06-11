@@ -1,26 +1,26 @@
 <?php
 session_start();
 
-if ($_SERVER["REQUEST_METHOD"] === "GET")
+if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
     $travel_id = $_POST["travel_id"];
+    $alert_message = "";
 
-    if
-    (
-            !preg_match("/^[0-9]+$/", $travel_id)
-    )
+    if (!preg_match("/^[0-9]+$/", $travel_id))
     {
-
+            echo("<script>alert('Invalid user ID'); window.location.href = '/admin/travel/';</script>");
+            exit;
     }
 }
 else
 {
     header("location: /booking/");
+    exit;
 }
 
 ?>
 
-z<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -33,6 +33,11 @@ z<!doctype html>
 
 <?php
 include getenv("WEB_ROOT") . "php/templates/header.php";
+
+require_once getenv("WEB_ROOT") . "php/classes/db.php";
+
+use classes\db;
+
 ?>
 
 <main class="column main-item">

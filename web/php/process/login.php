@@ -30,10 +30,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         $alert_message = "Login successful";
         session_start();
         $_SESSION["valid"] = true;
-        $_SESSION["id"] = $user["id"];
+        $_SESSION["id"] = $user["user_id"];
         $_SESSION["name"] = $user["name"];
         $_SESSION["email"] = $user["email"];
-        $_SESSION["admin"] = $user["admin"];
+        $_SESSION["admin"] = $user["is_admin"];
     }
 }
 else

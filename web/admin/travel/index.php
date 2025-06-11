@@ -63,10 +63,10 @@ include getenv('WEB_ROOT') . "php/templates/header.php";
 
         foreach ($rows as $row)
         {
-            $stmt = $pdo->prepare("SELECT * FROM locations WHERE id=:id");
+            $stmt = $pdo->prepare("SELECT * FROM locations WHERE location_id=:id");
             $stmt->execute(['id' => $row['location_id']]);
             $location_name = $stmt->fetch()['name'];
-            echo sprintf($template, $row['id'], $row['name'], $location_name, $row['price'], $row["description"]);
+            echo sprintf($template, $row['travel_id'], $row['name'], $location_name, $row['price'], $row["description"]);
         }
 
         ?>
@@ -93,7 +93,7 @@ include getenv('WEB_ROOT') . "php/templates/header.php";
 
         foreach ($rows as $row)
         {
-            echo sprintf($template, $row['id'], $row['name']);
+            echo sprintf($template, $row['location_id'], $row['name']);
         }
 
         ?>

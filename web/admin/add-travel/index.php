@@ -43,7 +43,7 @@ $locations = $pdo->query("SELECT * FROM locations");
         <div class="form-item">
             <h2>Locatie</h2>
             <select name="location" required>
-                <?php foreach ($locations as $location): echo "<option value='" . $location["id"] . "'>" . $location["name"] . "</option>"; endforeach; ?>
+                <?php foreach ($locations as $location): echo "<option value='" . $location["location_id"] . "'>" . $location["name"] . "</option>"; endforeach; ?>
             </select>
         </div>
         <div class="form-item">

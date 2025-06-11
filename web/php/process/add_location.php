@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         $stmt = $pdo->prepare("SELECT * FROM locations WHERE name = :name");
         $stmt->execute(array(":name" => $name));
         $location = $stmt->fetch();
-        $image["name"] = $location["id"];
+        $image["name"] = $location["location_id"];
 
 
         move_uploaded_file($image["tmp_name"], getenv("WEB_ROOT") . "img/location-items/" . basename($image["name"]));

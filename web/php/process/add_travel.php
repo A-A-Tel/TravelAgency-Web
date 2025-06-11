@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
 
         $stmt = $pdo->prepare("SELECT * FROM travels WHERE name = :name");
         $stmt->execute(["name" => $name]);
-        $image["name"] = $stmt->fetch()["id"];
+        $image["name"] = $stmt->fetch()["travel_id"];
 
         move_uploaded_file($image["tmp_name"], getenv("WEB_ROOT") . "img/travel-items/" . basename($image["name"]));
 

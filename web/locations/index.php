@@ -34,7 +34,7 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
 
         foreach ($rows as $row)
         {
-            echo sprintf($template, $row["id"], $row["name"]);
+            echo sprintf($template, $row["location_id"], $row["name"]);
         }
         ?>
 
