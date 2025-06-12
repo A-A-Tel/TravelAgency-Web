@@ -13,13 +13,13 @@ if (isset($_SESSION["valid"]) && $_SESSION["valid"])
 else
 {
     $login_button = "<button onclick='rd(`/login/`)' class='nav-button login-button'>Login</button>";
-    $avatar_path = "/img/avatar-placeholder.png";
 }
 ?>
 
 <script src="/js/main.js"></script>
 <header>
-    <button class="mode-button"></button>
+
+    <?php if (isset($_SESSION["valid"]) && $_SESSION["valid"]) echo '<button onclick="rd(`/php/process/logout.php`)" class="mode-button"></button>' ?>
     <nav>
         <button onclick="rd('/')" class="nav-button">Start</button>
         <button onclick="rd('/about/')" class="nav-button">Over</button>
@@ -31,5 +31,5 @@ else
         <button onclick="rd('/contact/')" class="nav-button">Contact</button>
         <?php echo $login_button; ?>
     </nav>
-    <img src="<?php echo $avatar_path ?>" alt="avatar" class="avatar">
+    <?php if (isset($_SESSION["valid"]) && $_SESSION["valid"]) echo "<img src='$avatar_path' alt='avatar' class='avatar'>" ?>
 </header>

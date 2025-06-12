@@ -1,15 +1,32 @@
 <?php
 session_start();
 
+use classes\db;
+
+require_once getenv("WEB_ROOT") . "php/classes/db.php";
+
 if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
     $travel_id = $_POST["travel_id"];
-    $alert_message = "";
+
+
+    $sql = "SELECT travels.*,locations.name AS location_name FROM travels INNER JOIN locations ON travels.location_id = locations.location_id WHERE travel_id = :travel_id";
 
     if (!preg_match("/^[0-9]+$/", $travel_id))
     {
-            echo("<script>alert('Invalid user ID'); window.location.href = '/admin/travel/';</script>");
-            exit;
+        echo("<script>alert('Invalid user ID'); window.location.href = '/admin/travel/';</script>");
+        exit;
+    }
+    $pdo = new db()->pdo;
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(["travel_id" => $travel_id]);
+    $travel = $stmt->fetch();
+
+    if (!$travel)
+    {
+        echo("<script>alert('Item does not exist'); window.location.href = '/admin/travel/';</script>");
+        exit;
     }
 }
 else
@@ -34,24 +51,21 @@ else
 <?php
 include getenv("WEB_ROOT") . "php/templates/header.php";
 
-require_once getenv("WEB_ROOT") . "php/classes/db.php";
-
-use classes\db;
 
 ?>
 
 <main class="column main-item">
     <div class="row item-preview">
-        <img src="/img/placeholder.svg" alt="item">
+        <img src="/img/travel-items/<?php echo $travel["travel_id"] ?>" alt="item">
         <div>
             <p>
-                Naam: Lorem
+                Naam: <?php echo $travel["name"]; ?>
                 <br>
-                Locatie: Ipsum
+                Locatie: <?php echo $travel["location_name"]; ?>
                 <br>
-                Prijs: Dolor
+                Prijs: &euro; <?php echo $travel["price"]; ?>
                 <br>
-                Beschrijving: Sit
+                Beschrijving: <?php echo $travel["description"]; ?>
             </p>
             <div>
                 <button style="background: #2AD49C">Toevoegen</button>
