@@ -6,7 +6,7 @@ use classes\db;
 
 $db = new db();
 
-if (!$db->is_admin_session()) {
+if (!$db->is_user_session()) {
     $db->alert_and_send("Not permitted", "/login/");
     exit;
 }
