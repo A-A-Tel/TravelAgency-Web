@@ -4,23 +4,32 @@ function rd(href) {
 }
 
 // Travel submitting to enter the /item/ page
-function travelSubmit(travel_id) {
+function enterItemPage(travel_id) {
 
-    document.body.innerHTML += `<form id='form' method="POST" action='/item/'><input type='hidden' name="travel_id" value="${travel_id}"></form>`;
-    setTimeout(() => {}, 50)
-
-    const form = document.getElementById('form');
-
-    form.submit();
+    formSubmit(travel_id, "travel_id", "/item/");
 }
 
 // Review submitting to enter the /review/ page
-function reviewSubmit(travel_id) {
-    document.body.innerHTML += `<form id='form' method="POST" action='/review/'><input type='hidden' name="travel_id" value="${travel_id}"></form>`;
-    setTimeout(() => {}, 50)
+function enterReviewPage(travel_id) {
+
+    formSubmit(travel_id, "travel_id", "/review/");
+}
+
+// Admin check gets performed in the php file, required to submit via single button
+function adminRemoveTravel(travel_id) {
+
+    formSubmit(travel_id, "travel_id", "/php/process/remove-travel.php");
+}
+
+// Created to avoid repeating code
+function formSubmit(id, name, action) {
+
+    document.body.innerHTML += `<form id='form' method="POST" action='${action}'><input type='hidden' name="${name}" value="${id}"></form>`;
+    setTimeout(() => {
+        console.log("Waiting for dom to update...");
+    }, 50)
 
     const form = document.getElementById('form');
 
     form.submit();
-
 }

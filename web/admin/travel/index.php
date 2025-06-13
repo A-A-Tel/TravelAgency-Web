@@ -54,7 +54,7 @@ include getenv('WEB_ROOT') . "php/templates/header.php";
                 Beschrijving: %s
             </p>
             <span>
-                <button style="background: #e12a37;">Verwijder</button>
+                <button onclick="adminRemoveTravel(`%s`)" style="background: #e12a37;">Verwijder</button>
                 <button style="background: #ff8700;">Bewerk</button>
             </span>
         </div>
@@ -66,7 +66,7 @@ include getenv('WEB_ROOT') . "php/templates/header.php";
             $stmt = $pdo->prepare("SELECT * FROM locations WHERE location_id=:id");
             $stmt->execute(['id' => $row['location_id']]);
             $location_name = $stmt->fetch()['name'];
-            echo sprintf($template, $row['travel_id'], $row['name'], $location_name, $row['price'], $row["description"]);
+            echo sprintf($template, $row['travel_id'], $row['name'], $location_name, $row['price'], $row["description"], $row['travel_id']);
         }
 
         ?>

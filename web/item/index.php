@@ -67,7 +67,7 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
             </p>
             <div>
                 <button style="background: #2AD49C">Toevoegen</button>
-                <button onclick="reviewSubmit('<?php echo $travel_id ?>')" style="background: #FF8800">Recenseer
+                <button onclick="enterReviewPage('<?php echo $travel_id ?>')" style="background: #FF8800">Recenseer
                 </button>
             </div>
         </div>

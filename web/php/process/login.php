@@ -1,44 +1,34 @@
 <?php
-
-namespace process;
-
+session_start();
 require_once "../classes/db.php";
 
 use classes\db;
 
+$db = new db();
 
-if ($_SERVER["REQUEST_METHOD"] === "POST")
+if ($_SERVER["REQUEST_METHOD"] !== "POST")
 {
-    $email = $_POST["email"];
-    $pass = $_POST["pass"];
-
-    $pdo = new db()->pdo;
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
-    $stmt->execute(["email" => $email]);
-    $user = $stmt->fetch();
-
-    if (!$user)
-    {
-        $alert_message = "Invalid input";
-    }
-    else if (!password_verify($pass, $user["pass"]))
-    {
-        $alert_message = "Invalid input";
-    }
-    else
-    {
-        $alert_message = "Login successful";
-        session_start();
-        $_SESSION["valid"] = true;
-        $_SESSION["id"] = $user["user_id"];
-        $_SESSION["name"] = $user["name"];
-        $_SESSION["email"] = $user["email"];
-        $_SESSION["admin"] = $user["is_admin"];
-    }
+    $db->alertAndSend("Not permitted", "/login/");
 }
-else
+
+$email = $_POST["email"];
+$pass = $_POST["pass"];
+
+$pdo = new db()->pdo;
+$stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+$stmt->execute(["email" => $email]);
+$user = $stmt->fetch();
+
+if (!$user || !password_verify($pass, $user["pass"]))
 {
-    header("Location: /login/");
+    $db->alertAndSend("Invalid input", "/login/");
     exit;
 }
-echo("<script>alert('$alert_message'); window.location.href = '/account/';</script>");
+
+$_SESSION["valid"] = true;
+$_SESSION["id"] = $user["user_id"];
+$_SESSION["name"] = $user["name"];
+$_SESSION["email"] = $user["email"];
+$_SESSION["admin"] = $user["is_admin"];
+
+$db->alertAndSend('Successfully logged in', "/account/");

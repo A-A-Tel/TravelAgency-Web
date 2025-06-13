@@ -12,7 +12,7 @@ class BookingItem extends HTMLElement {
 
         this._shadow.innerHTML = `
             
-            <button onclick="travelSubmit(${this.id})""></button>
+            <button onclick="enterItemPage(${this.id})""></button>
             <h2>${this.getAttribute("loc") ?? "Lorem"} - ${this.getAttribute("name") ?? "ipsum"}</h2>
             <span>
                 <button style="background: #F00">-</button>
