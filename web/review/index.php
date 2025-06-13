@@ -29,7 +29,7 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
 ?>
 
 <main>
-    <form action="/process/add_review.php" method="POST">
+    <form action="/php/process/add_review.php" method="POST">
         <input type="hidden" name="travel_id" value="<?php echo $travel_id ?>">
 
         <div class="form-item">
