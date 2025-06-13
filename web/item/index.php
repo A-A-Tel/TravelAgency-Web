@@ -50,8 +50,6 @@ else
 
 <?php
 include getenv("WEB_ROOT") . "php/templates/header.php";
-
-
 ?>
 
 <main class="column main-item">
@@ -63,42 +61,50 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
                 <br>
                 Locatie: <?php echo $travel["location_name"]; ?>
                 <br>
-                Prijs: &euro; <?php echo $travel["price"]; ?>
+                Prijs: &euro;<?php echo $travel["price"]; ?>
                 <br>
                 Beschrijving: <?php echo $travel["description"]; ?>
             </p>
             <div>
                 <button style="background: #2AD49C">Toevoegen</button>
-                <button style="background: #FF8800">Recenseer</button>
+                <button onclick="reviewSubmit('<?php echo $travel_id ?>')" style="background: #FF8800">Recenseer
+                </button>
             </div>
         </div>
 
     </div>
     <h1>Recensies</h1>
+    <?php
+
+    $template = '
     <div name="review">
         <div>
-            <img src="/img/avatar-placeholder.png" alt="review">
+            <img src="/img/user-items/%s" alt="review">
             <div>
                 <div>
-                    <img src="/img/star.svg" alt="star">
-                    <img src="/img/star.svg" alt="star">
-                    <img src="/img/star.svg" alt="star">
-                    <img src="/img/star.svg" alt="star">
-                    <img src="/img/star.svg" alt="star">
+                    %s
                 </div>
-                <span>Lorem ipsum dolor sit amet</span>
+                <span>%s - %s</span>
             </div>
         </div>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-        </p>
-    </div>
+        <p>%s</p>
+    </div>';
+
+    $stmt = $pdo->prepare("SELECT reviews.*, users.name AS user_name, users.user_id FROM reviews INNER JOIN users ON reviews.user_id = users.user_id WHERE travel_id = :travel_id ORDER BY reviews.review_id DESC");
+
+    $stmt->execute(["travel_id" => $travel_id]);
+    $rows = $stmt->fetchAll();
+
+    foreach ($rows as $row)
+    {
+        $stars = "";
+
+        for ($i = 1; $i <= $row["score"]; $i++) $stars .= '<img src="/img/star-filled.svg" alt="star">';
+        for (; $i <= 5; $i++) $stars .= '<img src="/img/star.svg" alt="star">';
+
+        echo sprintf($template, $row["user_id"], $stars, $row["user_name"], $row["created_at"], $row["content"]);
+    }
+    ?>
 </main>
 
 <?php

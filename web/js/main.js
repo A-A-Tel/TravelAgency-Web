@@ -13,3 +13,14 @@ function travelSubmit(travel_id) {
 
     form.submit();
 }
+
+// Review submitting to enter the /review/ page
+function reviewSubmit(travel_id) {
+    document.body.innerHTML += `<form id='form' method="POST" action='/review/'><input type='hidden' name="travel_id" value="${travel_id}"></form>`;
+    setTimeout(() => {}, 50)
+
+    const form = document.getElementById('form');
+
+    form.submit();
+
+}
