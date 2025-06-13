@@ -32,7 +32,7 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
     <div class="item-grid">
         <?php
 
-        $pdo = $db->pdo;
+        $pdo = $db->get_pdo();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST')
         {

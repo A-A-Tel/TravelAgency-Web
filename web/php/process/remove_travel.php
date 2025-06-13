@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST" || !$db->is_admin_session())
 
 $travel_id = $_POST['travel_id'];
 
-$pdo = $db->pdo;
+$pdo = $db->get_pdo();
 
 $stmt = $pdo->prepare("DELETE FROM reviews WHERE travel_id = :travel_id");
 $stmt->execute(["travel_id" => $travel_id]);

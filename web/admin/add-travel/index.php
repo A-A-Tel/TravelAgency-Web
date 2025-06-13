@@ -26,7 +26,7 @@ if (!$db->is_admin_session())
 <?php
 include getenv("WEB_ROOT") . "php/templates/header.php";
 
-$pdo = $db->pdo;
+$pdo = $db->get_pdo();
 $locations = $pdo->query("SELECT * FROM locations");
 
 ?>

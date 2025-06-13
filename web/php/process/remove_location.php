@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST" || !$db->is_admin_session())
     exit;
 }
 
-$pdo = $db->pdo;
+$pdo = $db->get_pdo();
 
 $location_id = $_POST['location_id'];
 

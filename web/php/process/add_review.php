@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST" || !$db->is_user_session())
     exit;
 }
 
-$pdo = $db->pdo;
+$pdo = $db->get_pdo();
 
 $travel_id = $_POST["travel_id"];
 $user_id = $_SESSION["id"];

@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST")
     exit;
 }
 
-$pdo = $db->pdo;
+$pdo = $db->get_pdo();
 
 $name = $_POST["name"];
 $email = $_POST["email"];

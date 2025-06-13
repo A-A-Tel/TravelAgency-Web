@@ -12,7 +12,7 @@ if (!$db->is_admin_session())
     exit;
 }
 
-$pdo = $db->pdo;
+$pdo = $db->get_pdo();
 ?>
 
 <!doctype html>
