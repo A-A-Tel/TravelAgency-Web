@@ -41,6 +41,7 @@ if
 )
 {
     $db->alert_and_send("Invalid input", "/admin/travel/");
+    exit;
 }
 
 $stmt = $pdo->prepare("INSERT INTO travels (name, price, description, location_id) VALUES (:name, :price, :description, :location_id)");

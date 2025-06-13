@@ -34,7 +34,14 @@ include getenv('WEB_ROOT') . "php/templates/header.php";
         <?php
 
 
-        $template = '
+
+
+        $pdo = $db->get_pdo();
+        $rows = $pdo->query("SELECT * FROM `contact` WHERE answered=0 ORDER BY `created_at`")->fetchAll();
+
+        foreach ($rows as $row)
+        {
+            $template = '
         <div class="item-info">
             <p>
                 Datum/Tijd: %s
@@ -48,18 +55,13 @@ include getenv('WEB_ROOT') . "php/templates/header.php";
                 %s
             </p>
             <span>
-                <button style="background: #e12a37;">Verwijder</button>
-                <button style="background: #27d39b;">Beantwoord</button>
+                <button onclick="adminAnswerContact(`%s`)" style="background: #27d39b;">Beantwoord</button>
             </span>
         </div>
         ';
 
-        $pdo = $db->get_pdo();
-        $rows = $pdo->query("SELECT * FROM `contact` ORDER BY `created_at`")->fetchAll();
 
-        foreach ($rows as $row)
-        {
-            echo sprintf($template, $row['created_at'], $row['name'], $row['email'], $row['message']);
+            echo sprintf($template, $row['created_at'], $row['name'], $row['email'], $row['message'], $row['contact_id']);
         }
 
         ?>

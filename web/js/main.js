@@ -4,27 +4,45 @@ function rd(href) {
 }
 
 // Travel submitting to enter the /item/ page
-function enterItemPage(travel_id) {
+function enterItemPage(travelId) {
 
-    formSubmit(travel_id, "travel_id", "/item/");
+    formSubmit(travelId, "travel_id", "/item/");
 }
 
 // Review submitting to enter the /review/ page
-function enterReviewPage(travel_id) {
+function enterReviewPage(travelId) {
 
-    formSubmit(travel_id, "travel_id", "/review/");
+    formSubmit(travelId, "travel_id", "/review/");
+}
+
+// Mark a contact request as answered
+function adminAnswerContact(contactId) {
+
+    formSubmit(contactId, "contact_id", "/php/process/answer_contact.php");
 }
 
 // Admin check gets performed in the php file, required to submit via single button
-function adminRemoveTravel(travel_id) {
+function adminRemoveTravel(travelId) {
 
-    formSubmit(travel_id, "travel_id", "/php/process/remove_travel.php");
+    formSubmit(travelId, "travel_id", "/php/process/remove_travel.php");
 }
 
 // Admin check gets performed in the php file, required to submit via single button
-function adminRemoveLocation(location_id) {
+function adminRemoveLocation(locationId) {
 
-    formSubmit(location_id, "location_id", "/php/process/remove_location.php");
+    formSubmit(locationId, "location_id", "/php/process/remove_location.php");
+}
+
+// Admin check gets performed in the php file, required to submit via single button
+function adminEditLocation(locationId) {
+
+    formSubmit(locationId, "location_id", "/admin/add-location/");
+}
+
+// Admin check gets performed in the php file, required to submit via single button
+function adminEditTravel(travelId) {
+
+    formSubmit(travelId, "travel_id", "/admin/add-travel/");
 }
 
 // Created to avoid repeating code

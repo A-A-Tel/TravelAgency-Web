@@ -46,6 +46,7 @@ include getenv('WEB_ROOT') . "php/templates/header.php";
             <div style=\"background: #000 url('/img/location-items/%s') no-repeat center / 100%% 100%%\"></div>
             <span class='location-span'>
                 <span>%s</span>
+                <button onclick='adminEditLocation(`%s`)' class='location-remove-button' style='background: #ff8700;'>Bewerken</button>
                 <button onclick='adminRemoveLocation(`%s`)' class='location-remove-button' style='background: #e12a37;'>Verwijderen</button>
             </span>
         </div>
@@ -55,7 +56,7 @@ include getenv('WEB_ROOT') . "php/templates/header.php";
 
         foreach ($rows as $row)
         {
-            echo sprintf($template, $row['location_id'], $row['name'], $row["location_id"]);
+            echo sprintf($template, $row['location_id'], $row['name'], $row["location_id"], $row["location_id"]);
         }
 
         ?>
@@ -86,7 +87,7 @@ include getenv('WEB_ROOT') . "php/templates/header.php";
             </p>
             <span>
                 <button onclick="adminRemoveTravel(`%s`)" style="background: #e12a37;">Verwijder</button>
-                <button style="background: #ff8700;">Bewerk</button>
+                <button onclick="adminEditTravel(`%s`)" style="background: #ff8700;">Bewerk</button>
             </span>
         </div>
         ';
@@ -97,7 +98,7 @@ include getenv('WEB_ROOT') . "php/templates/header.php";
             $stmt = $pdo->prepare("SELECT * FROM locations WHERE location_id=:id");
             $stmt->execute(['id' => $row['location_id']]);
             $location_name = $stmt->fetch()['name'];
-            echo sprintf($template, $row['travel_id'], $row['name'], $location_name, $row['price'], $row["description"], $row['travel_id']);
+            echo sprintf($template, $row['travel_id'], $row['name'], $location_name, $row['price'], $row["description"], $row['travel_id'], $row['travel_id']);
         }
 
         ?>
