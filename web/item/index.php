@@ -1,40 +1,36 @@
 <?php
 session_start();
+require_once getenv("WEB_ROOT") . "php/classes/db.php";
 
 use classes\db;
 
-require_once getenv("WEB_ROOT") . "php/classes/db.php";
+$db = new db();
 
-if ($_SERVER["REQUEST_METHOD"] === "POST")
+if ($_SERVER["REQUEST_METHOD"] !== "POST")
 {
-    $travel_id = $_POST["travel_id"];
-
-
-    $sql = "SELECT travels.*,locations.name AS location_name FROM travels INNER JOIN locations ON travels.location_id = locations.location_id WHERE travel_id = :travel_id";
-
-    if (!preg_match("/^[0-9]+$/", $travel_id))
-    {
-        echo("<script>alert('Invalid user ID'); window.location.href = '/admin/travel/';</script>");
-        exit;
-    }
-    $pdo = new db()->pdo;
-
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(["travel_id" => $travel_id]);
-    $travel = $stmt->fetch();
-
-    if (!$travel)
-    {
-        echo("<script>alert('Item does not exist'); window.location.href = '/admin/travel/';</script>");
-        exit;
-    }
-}
-else
-{
-    header("location: /travel/");
+    $db->alert_and_send("Not permitted", "/account/");
     exit;
 }
 
+$travel_id = $_POST["travel_id"];
+
+if (!preg_match("/^[0-9]+$/", $travel_id))
+{
+    echo("<script>alert('Invalid user ID'); window.location.href = '/admin/travel/';</script>");
+    exit;
+}
+
+$pdo = $db->get_pdo();
+
+$stmt = $pdo->prepare("SELECT travels.*,locations.name AS location_name FROM travels INNER JOIN locations ON travels.location_id = locations.location_id WHERE travel_id = :travel_id");
+$stmt->execute(["travel_id" => $travel_id]);
+$travel = $stmt->fetch();
+
+if (!$travel)
+{
+    $db->alert_and_send("Travel does not exist", "/travel/");
+    exit;
+}
 ?>
 
 <!doctype html>

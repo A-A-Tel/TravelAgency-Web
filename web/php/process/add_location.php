@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST" || !$db->is_admin_session())
     exit;
 }
 
-$pdo = new db()->pdo;
+$pdo = $db->get_pdo();
 
 $name = $_POST["name"];
 $image = $_FILES["image"];

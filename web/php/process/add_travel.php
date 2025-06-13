@@ -18,7 +18,7 @@ $description = $_POST["description"];
 $location_id = $_POST["location"];
 $image = $_FILES["image"];
 
-$pdo = new db()->pdo;
+$pdo = $db->get_pdo();
 $stmt = $pdo->prepare("SELECT * FROM travels WHERE name = :name");
 $stmt->execute(['name' => $name]);
 $travel = $stmt->fetch();
