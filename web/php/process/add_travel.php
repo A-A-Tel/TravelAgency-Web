@@ -6,7 +6,7 @@ use classes\db;
 
 $db = new db();
 
-if ($_SERVER["REQUEST_METHOD"] !== "POST" || $db->is_admin_session())
+if ($_SERVER["REQUEST_METHOD"] !== "POST" || !$db->is_admin_session())
 {
     $db->alert_and_send("Not permitted", "/account/");
     exit;

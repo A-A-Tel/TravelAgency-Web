@@ -318,7 +318,6 @@ form {
   }
   span, a {
     color: $text-primary;
-    display: block;
     margin-top: 2vw;
     text-decoration: underline;
     font: {
@@ -560,4 +559,25 @@ form {
 
 .no-render {
   display: none;
+}
+
+.travel-search {
+  margin: 5vw auto;
+}
+
+.location-span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.location-remove-button {
+  margin: 1vw auto;
+  padding: 0.5vw;
+  border-radius: 0.6vw;
+  text-decoration: none;
+  font: {
+    family: 'concert-one', sans-serif;
+    size: 1.3vw;
+  }
 }

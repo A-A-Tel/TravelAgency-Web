@@ -85,7 +85,10 @@ include getenv('WEB_ROOT') . "php/templates/header.php";
         
         <div class=\"item\">
             <div style=\"background: #000 url('/img/location-items/%s') no-repeat center / 100%% 100%%\"></div>
-            <span>%s</span>
+            <span class='location-span'>
+                <span>%s</span>
+                <button onclick='adminRemoveLocation(`%s`)' class='location-remove-button' style='background: #e12a37;'>Verwijderen</button>
+            </span>
         </div>
         ";
 
@@ -93,7 +96,7 @@ include getenv('WEB_ROOT') . "php/templates/header.php";
 
         foreach ($rows as $row)
         {
-            echo sprintf($template, $row['location_id'], $row['name']);
+            echo sprintf($template, $row['location_id'], $row['name'], $row["location_id"]);
         }
 
         ?>

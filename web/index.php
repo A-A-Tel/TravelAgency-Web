@@ -21,7 +21,7 @@
             verder en ontdek de wereld.
         </p>
     </div>
-    <form action="#" method="POST" class="home-search">
+    <form action="/travel/" method="POST" class="home-search">
         <input type="text" name="search" placeholder="Search">
     </form>
 </main>

@@ -1,4 +1,11 @@
-<?php session_start() ?>
+<?php
+session_start();
+require_once getenv("WEB_ROOT") . "php/classes/db.php";
+
+use classes\db;
+
+$db = new db();
+?>
 
 <!doctype html>
 <html lang="en">
@@ -17,25 +24,35 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
 ?>
 
 <main>
+
+    <form action="/travel/" method="POST" class="home-search travel-search">
+        <input type="text" name="search" placeholder="Search">
+    </form>
+
     <div class="item-grid">
         <?php
 
-        require_once getenv("WEB_ROOT") . "php/classes/db.php";
-        use classes\db;
+        $pdo = $db->pdo;
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST')
+        {
+            $search = $_POST['search'];
 
-        $pdo = new db()->pdo;
+            $stmt = $pdo->prepare("SELECT travels.*, locations.name AS location_name FROM travels INNER JOIN locations ON locations.location_id = travels.location_id WHERE travels.name LIKE CONCAT('%', :search, '%') OR locations.name LIKE CONCAT('%', :search, '%')");
+            $stmt->execute(["search" => $search]);
+        }
+        else
+        {
+            $stmt = $pdo->prepare("SELECT travels.*, locations.name AS location_name FROM travels INNER JOIN locations ON locations.location_id = travels.location_id");
+            $stmt->execute();
+        }
 
-        $rows = $pdo->query("SELECT * FROM travels")->fetchAll();
+        $rows = $stmt->fetchAll();
         $template =  "<travel-item id='%s' loc='%s' name='%s' price='%s'></travel-item>";
 
         foreach ($rows as $row) {
-            $stmt = $pdo->prepare("SELECT * FROM locations WHERE location_id=:id");
-            $stmt->execute([":id" => $row["location_id"]]);
-            $location_name = $stmt->fetch()["name"];
-            echo sprintf($template, $row["travel_id"], $location_name, $row["name"], $row["price"]);
+            echo sprintf($template, $row["travel_id"], $row["location_name"], $row["name"], $row["price"]);
         }
-
         ?>
     </div>
 </main>

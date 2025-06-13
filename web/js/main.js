@@ -18,7 +18,13 @@ function enterReviewPage(travel_id) {
 // Admin check gets performed in the php file, required to submit via single button
 function adminRemoveTravel(travel_id) {
 
-    formSubmit(travel_id, "travel_id", "/php/process/remove-travel.php");
+    formSubmit(travel_id, "travel_id", "/php/process/remove_travel.php");
+}
+
+// Admin check gets performed in the php file, required to submit via single button
+function adminRemoveLocation(location_id) {
+
+    formSubmit(location_id, "location_id", "/php/process/remove_location.php");
 }
 
 // Created to avoid repeating code
