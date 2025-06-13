@@ -7,7 +7,7 @@ $db = new db();
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST")
 {
-    $db->alertAndSend("Not permitted", "/register/");
+    $db->alert_and_send("Not permitted", "/register/");
 }
 
 $name = $_POST["name"];
@@ -22,7 +22,7 @@ $user = $stmt->fetch();
 
 if ($user)
 {
-    $db->alertAndSend("Email already exits", "/register/");
+    $db->alert_and_send("Email already exits", "/register/");
     exit;
 }
 
@@ -34,7 +34,7 @@ if
     $avatar["error"] != 0
 )
 {
-    $db->alertAndSend("Invalid input", "/register/");
+    $db->alert_and_send("Invalid input", "/register/");
 }
 
 $pass = password_hash($pass, PASSWORD_DEFAULT);
@@ -49,4 +49,4 @@ $avatar["name"] = $user["user_id"];
 
 move_uploaded_file($avatar["tmp_name"], getenv("WEB_ROOT") . "img/user-items/" . basename($avatar["name"]));
 
-$db->alertAndSend("Successfully registered", "/login/");
+$db->alert_and_send("Successfully registered", "/login/");

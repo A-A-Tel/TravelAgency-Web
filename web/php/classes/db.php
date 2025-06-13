@@ -35,7 +35,7 @@ class db
         return $this->is_user_session() && $_SESSION['is_admin'];
     }
 
-    public function alertAndSend(string $message, string $href): void
+    public function alert_and_send(string $message, string $href): void
     {
         echo "<script type='text/javascript'>alert('$message'); window.location.href='$href'</script>";
     }

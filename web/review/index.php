@@ -1,10 +1,17 @@
-<?php session_start();
+<?php
+session_start();
+require_once getenv("WEB_ROOT") . "php/classes/db.php";
 
-if ($_SERVER["REQUEST_METHOD"] !== "POST" || !isset($_SESSION["valid"]) || !$_SESSION["valid"])
+use classes\db;
+
+$db = new db();
+
+if ($_SERVER["REQUEST_METHOD"] !== "POST" || !$db->is_user_session())
 {
-    echo "<script type='text/javascript'>alert('Not permitted'); window.location.href='/account/'</script>";
+    $db->alert_and_send("Not permitted", "/account/");
     exit;
 }
+
 $travel_id = $_POST["travel_id"];
 ?>
 <!doctype html>

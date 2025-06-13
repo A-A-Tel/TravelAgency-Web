@@ -9,4 +9,4 @@ session_start();
 session_unset();
 session_destroy();
 
-$db->alertAndSend("Successfully logged out", "/");
+$db->alert_and_send("Successfully logged out", "/");

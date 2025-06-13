@@ -7,7 +7,7 @@ $db = new db();
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST")
 {
-    $db->alertAndSend("Not permitted", "/contact/");
+    $db->alert_and_send("Not permitted", "/contact/");
     exit;
 }
 
@@ -24,11 +24,11 @@ if
     !preg_match('/^[\p{L}\p{N}\p{P}\p{S}\p{Z}]+$/u', $message)
 )
 {
-    $db->alertAndSend("Invalid input", "/contact/");
+    $db->alert_and_send("Invalid input", "/contact/");
 }
 
 
 $stmt = $pdo->prepare("INSERT INTO contact (name, email, message) VALUES(:name, :email, :message)");
 $stmt->execute(["name" => $name, "email" => $email, "message" => $message]);
 
-$db->alertAndSend("Successfully sent contact request", "/contact/");
+$db->alert_and_send("Successfully sent contact request", "/contact/");

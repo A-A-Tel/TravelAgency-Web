@@ -1,9 +1,14 @@
 <?php
 session_start();
+require_once getenv("WEB_ROOT") . "php/classes/db.php";
 
-if (!isset($_SESSION['valid']) || !$_SESSION['valid'] || !$_SESSION['admin'])
+use classes\db;
+
+$db = new db();
+
+if (!$db->is_admin_session())
 {
-    header("Location: /login/");
+    $db->alert_and_send("Not permitted", "/account/");
     exit;
 }
 ?>

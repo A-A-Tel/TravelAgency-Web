@@ -8,7 +8,7 @@ $db = new db();
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST" || !$db->is_admin_session())
 {
-    $db->alertAndSend("Not permitted", "/login/");
+    $db->alert_and_send("Not permitted", "/login/");
     exit;
 }
 
@@ -35,4 +35,4 @@ foreach ($rows as $row)
 $stmt = $pdo->prepare("DELETE FROM locations WHERE location_id = :location_id");
 $stmt->execute(["location_id" => $location_id]);
 
-$db->alertAndSend("Successfully removed location", "/admin/travel/");
+$db->alert_and_send("Successfully removed location", "/admin/travel/");

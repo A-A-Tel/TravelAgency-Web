@@ -8,7 +8,7 @@ $db = new db();
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST" || !$db->is_user_session())
 {
-    $db->alertAndSend("Not permitted", "/account/");
+    $db->alert_and_send("Not permitted", "/account/");
     exit;
 }
 
@@ -27,11 +27,11 @@ if
     !preg_match('/^[\p{L}\p{N}\p{P}\p{S}\p{Z}]{1,120}$/u', $content)
 )
 {
-    $db->alertAndSend("Invalid input", "/account/");
+    $db->alert_and_send("Invalid input", "/account/");
     exit;
 }
 
 $stmt = $pdo->prepare("INSERT INTO reviews (travel_id, user_id, score, content) VALUES (:travel_id, :user_id,  :score, :content)");
 $stmt->execute(["travel_id" => $travel_id, "user_id" => $user_id, "score" => $score, "content" => $content]);
 
-$db->alertAndSend("Successfully added review", "/account/");
+$db->alert_and_send("Successfully added review", "/account/");

@@ -8,7 +8,7 @@ $db = new db();
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST" || $db->is_admin_session())
 {
-    $db->alertAndSend("Not permitted", "/account/");
+    $db->alert_and_send("Not permitted", "/account/");
     exit;
 }
 
@@ -27,7 +27,7 @@ echo $price;
 
 if ($travel)
 {
-    $db->alertAndSend("Travel already exists", "/admin/travel/");
+    $db->alert_and_send("Travel already exists", "/admin/travel/");
     exit;
 }
 
@@ -40,7 +40,7 @@ if
     $image["error"] != 0
 )
 {
-    $db->alertAndSend("Invalid input", "/admin/travel/");
+    $db->alert_and_send("Invalid input", "/admin/travel/");
 }
 
 $stmt = $pdo->prepare("INSERT INTO travels (name, price, description, location_id) VALUES (:name, :price, :description, :location_id)");
@@ -52,4 +52,4 @@ $image["name"] = $stmt->fetch()["travel_id"];
 
 move_uploaded_file($image["tmp_name"], getenv("WEB_ROOT") . "img/travel-items/" . basename($image["name"]));
 
-$db->alertAndSend("Successfully added travel", "/admin/travel");
+$db->alert_and_send("Successfully added travel", "/admin/travel");

@@ -1,9 +1,14 @@
 <?php
 session_start();
+require_once getenv("WEB_ROOT") . "php/classes/db.php";
 
-if (!isset($_SESSION['valid']) || !$_SESSION['valid'] || !$_SESSION['admin'])
+use classes\db;
+
+$db = new db();
+
+if (!$db->is_admin_session())
 {
-    header("Location: /login/");
+    $db->alert_and_send("Not permitted", "/account/");
     exit;
 }
 ?>
@@ -21,11 +26,7 @@ if (!isset($_SESSION['valid']) || !$_SESSION['valid'] || !$_SESSION['admin'])
 <?php
 include getenv("WEB_ROOT") . "php/templates/header.php";
 
-require_once getenv("WEB_ROOT") . "php/classes/db.php";
-
-use classes\db;
-
-$pdo = new db()->pdo;
+$pdo = $db->pdo;
 $locations = $pdo->query("SELECT * FROM locations");
 
 ?>

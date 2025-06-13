@@ -8,7 +8,7 @@ $db = new db();
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST" || !$db->is_admin_session())
 {
-    $db->alertAndSend("Not permitted", "/account/");
+    $db->alert_and_send("Not permitted", "/account/");
     exit;
 }
 
@@ -23,7 +23,7 @@ $location = $stmt->fetch();
 
 if ($location)
 {
-    $db->alertAndSend("Location already exists", "/admin/travel");
+    $db->alert_and_send("Location already exists", "/admin/travel");
     exit;
 }
 
@@ -33,7 +33,7 @@ if
     $image["error"] != 0
 )
 {
-    $db->alertAndSend("Invalid input", "/admin/travel");
+    $db->alert_and_send("Invalid input", "/admin/travel");
     exit;
 }
 
@@ -47,5 +47,5 @@ $image["name"] = $location["location_id"];
 
 move_uploaded_file($image["tmp_name"], getenv("WEB_ROOT") . "img/location-items/" . basename($image["name"]));
 
-$db->alertAndSend("Successfully added location", "/admin/travel");
+$db->alert_and_send("Successfully added location", "/admin/travel");
 
