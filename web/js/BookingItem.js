@@ -1,4 +1,4 @@
-class BookingItem extends HTMLElement {
+class TravelItem extends HTMLElement {
 
     constructor() {
         super();
@@ -79,4 +79,4 @@ class BookingItem extends HTMLElement {
     }
 }
 
-customElements.define("booking-item", BookingItem);
+customElements.define("travel-item", TravelItem);

@@ -34,7 +34,7 @@ else
     </nav>
     <a href="<?php echo $logo_link ?>"><img src="/img/logo.png" alt="logo"></a>
     <nav>
-        <button onclick="rd('/booking/')" class="nav-button">Boeken</button>
+        <button onclick="rd('/travel/')" class="nav-button">Reizen</button>
         <button onclick="rd('/contact/')" class="nav-button">Contact</button>
         <?php echo $login_button; ?>
     </nav>

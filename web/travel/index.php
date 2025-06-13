@@ -1,6 +1,4 @@
-<?php
-
-session_start() ?>
+<?php session_start() ?>
 
 <!doctype html>
 <html lang="en">
@@ -29,7 +27,7 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
         $pdo = new db()->pdo;
 
         $rows = $pdo->query("SELECT * FROM travels")->fetchAll();
-        $template =  "<booking-item id='%s' loc='%s' name='%s' price='%s'></booking-item>";
+        $template =  "<travel-item id='%s' loc='%s' name='%s' price='%s'></travel-item>";
 
         foreach ($rows as $row) {
             $stmt = $pdo->prepare("SELECT * FROM locations WHERE location_id=:id");
