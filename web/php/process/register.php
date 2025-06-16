@@ -35,6 +35,7 @@ if
 )
 {
     $db->alert_and_send("Invalid input", "/register/");
+    exit;
 }
 
 $pass = password_hash($pass, PASSWORD_DEFAULT);
