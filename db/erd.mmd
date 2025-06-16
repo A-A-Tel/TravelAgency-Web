@@ -1,0 +1,61 @@
+---
+title: travel_data
+---
+erDiagram
+    users {
+        BIGINT user_id PK
+        VARCHAR name
+        VARCHAR email UK
+        VARCHAR pass
+        BOOLEAN is_admin
+        TIMESTAMP created_at
+    }
+
+    locations {
+        BIGINT location_id PK
+        VARCHAR name UK
+        TIMESTAMP created_at
+    }
+
+    travels {
+        BIGINT travel_id PK
+        BIGINT location_id FK
+        VARCHAR name UK
+        VARCHAR description
+        VARCHAR price
+        TIMESTAMP created_at
+    }
+
+    bookings {
+        BIGINT booking_id PK
+        BIGINT user_id FK
+        BIGINT travel_id FK
+        DATE begin_date
+        DATE end_date
+        BOOLEAN approved
+        TIMESTAMP created_at
+    }
+
+    reviews {
+        BIGINT review_id PK
+        BIGINT user_id FK
+        BIGINT travel_id FK
+        TINYINT score
+        VARCHAR content
+        TIMESTAMP created_at
+    }
+
+    contact {
+        BIGINT contact_id PK
+        VARCHAR name
+        VARCHAR email
+        TEXT message
+        BOOLEAN answered
+        TIMESTAMP created_at
+    }
+
+    users ||--o{ bookings: makes
+    users ||--o{ reviews: writes
+    travels ||--o{ bookings: includes
+    travels ||--o{ reviews: has
+    locations ||--o{ travels: contains

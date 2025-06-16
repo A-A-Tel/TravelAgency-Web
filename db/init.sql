@@ -1,4 +1,4 @@
--- Create user and grant privileges
+-- Create user and grant privileges (created for testing, remove/edit in release)
 CREATE USER IF NOT EXISTS `user`;
 ALTER USER 'user'@'%' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON travel_data.* TO 'user'@'%';

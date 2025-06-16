@@ -40,9 +40,9 @@ function adminEditLocation(locationId) {
 }
 
 // Admin check gets performed in the php file, required to submit via single button
-function adminEditTravel(travelId) {
+function adminEditTravel(travel_id) {
 
-    formSubmit(travelId, "travel_id", "/admin/add-travel/");
+    formSubmit(travel_id, "travel_id", "/admin/add-travel/");
 }
 
 // Created to avoid repeating code
