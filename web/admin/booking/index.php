@@ -1,4 +1,17 @@
-<?php session_start() ?>
+<?php
+session_start();
+require_once getenv("WEB_ROOT") . "php/classes/db.php";
+
+use classes\db;
+
+$db = new db();
+
+if (!$db->is_admin_session())
+{
+    $db->alert_and_send("Not permitted", "/account/");
+    exit;
+}
+?>
 
 <!doctype html>
 <html lang="en">

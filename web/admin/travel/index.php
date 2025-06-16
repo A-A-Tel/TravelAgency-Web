@@ -1,4 +1,19 @@
-<?php session_start() ?>
+<?php
+session_start();
+require_once getenv("WEB_ROOT") . "php/classes/db.php";
+
+use classes\db;
+
+$db = new db();
+
+if (!$db->is_admin_session())
+{
+    $db->alert_and_send("Not permitted", "/account/");
+    exit;
+}
+
+$pdo = $db->get_pdo();
+?>
 
 <!doctype html>
 <html lang="en">
@@ -15,38 +30,80 @@ include getenv('WEB_ROOT') . "php/templates/header.php";
 ?>
 
 <main>
+
+    <div class="item-grid">
+
+        <div class="item">
+            <div></div>
+            <a href="/admin/add-location/">Nieuwe locatie</a>
+        </div>
+
+        <?php
+
+        $template = "
+        
+        <div class=\"item\">
+            <div style=\"background: #000 url('/img/location-items/%s') no-repeat center / 100%% 100%%\"></div>
+            <span class='location-span'>
+                <span>%s</span>
+                <button onclick='adminEditLocation(`%s`)' class='location-remove-button' style='background: #ff8700;'>Bewerken</button>
+                <button onclick='adminRemoveLocation(`%s`)' class='location-remove-button' style='background: #e12a37;'>Verwijderen</button>
+            </span>
+        </div>
+        ";
+
+        $rows = $pdo->query("SELECT * FROM locations");
+
+        foreach ($rows as $row)
+        {
+            echo sprintf($template, $row['location_id'], $row['name'], $row["location_id"], $row["location_id"]);
+        }
+
+        ?>
+    </div>
+
     <div class="item-grid grid-wrap">
         <div class="item-info">
+            <img src="/img/placeholder.svg" alt="placeholder">
             <p>
-                Naam: Lorem
-                <br>
-                Locatie: Ipsum
-                <br>
-                Prijs: €Dolor,sit
-                <br>
-                Beschrijving: amet...
+                Voeg een nieuwe reis toe!
             </p>
-            <span>
-                <button style="background: #e12a37;">Verwijder</button>
-                <button style="background: #ff8700;">Bewerk</button>
-            </span>
+            <a href="/admin/add-travel" style="background: #1aa377;" >Toevoegen</a>
         </div>
+
+        <?php
+
+        $template = '
         <div class="item-info">
+        <img src="/img/travel-items/%s" alt="image">
             <p>
-                Naam: Lorem
+                Naam: %s
                 <br>
-                Locatie: Ipsum
+                Locatie: %s
                 <br>
-                Prijs: €Dolor,sit
+                Prijs: %s
                 <br>
-                Beschrijving: amet...
+                Beschrijving: %s
             </p>
             <span>
-                <button style="background: #e12a37;">Verwijder</button>
-                <button style="background: #ff8700;">Bewerk</button>
+                <button onclick="adminRemoveTravel(`%s`)" style="background: #e12a37;">Verwijder</button>
+                <button onclick="adminEditTravel(`%s`)" style="background: #ff8700;">Bewerk</button>
             </span>
         </div>
+        ';
+        $rows = $pdo->query("SELECT * FROM travels")->fetchAll();
+
+        foreach ($rows as $row)
+        {
+            $stmt = $pdo->prepare("SELECT * FROM locations WHERE location_id=:id");
+            $stmt->execute(['id' => $row['location_id']]);
+            $location_name = $stmt->fetch()['name'];
+            echo sprintf($template, $row['travel_id'], $row['name'], $location_name, $row['price'], $row["description"], $row['travel_id'], $row['travel_id']);
+        }
+
+        ?>
     </div>
+
 </main>
 
 <?php

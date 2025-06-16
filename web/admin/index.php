@@ -1,4 +1,17 @@
-<?php session_start() ?>
+<?php
+session_start();
+require_once getenv("WEB_ROOT") . "php/classes/db.php";
+
+use classes\db;
+
+$db = new db();
+
+if (!$db->is_admin_session())
+{
+    $db->alert_and_send("Not permitted", "/account/");
+    exit;
+}
+?>
 
 <!doctype html>
 <html lang="en">
@@ -27,7 +40,7 @@ include getenv('WEB_ROOT') . "php/templates/header.php";
             <span>Reizen beheren</span>
         </div>
     </a>
-    
+
     <a href="/admin/contact/">
         <div class="admin-item">
             <img src="/img/scammers.png" alt="scammers">

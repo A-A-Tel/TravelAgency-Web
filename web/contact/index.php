@@ -15,7 +15,7 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
 ?>
 
 <main>
-    <form action="">
+    <form action="/php/process/contact.php" method="POST">
         <div class="form-item">
             <h2>Naam</h2>
             <input type="text" name="name" placeholder="Invoer..." required>
@@ -26,7 +26,7 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
         </div>
         <div class="form-item">
             <h2>Bericht</h2>
-            <textarea name="name" placeholder="Invoer..." required></textarea>
+            <textarea name="message" placeholder="Invoer..." required></textarea>
         </div>
         <input type="submit" value="Verzenden" class="submit">
     </form>

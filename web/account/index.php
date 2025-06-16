@@ -1,4 +1,16 @@
-<?php session_start() ?>
+<?php
+session_start();
+require_once getenv("WEB_ROOT") . "php/classes/db.php";
+
+use classes\db;
+
+$db = new db();
+
+if (!$db->is_user_session()) {
+    $db->alert_and_send("Not permitted", "/login/");
+    exit;
+}
+?>
 
 <!doctype html>
 <html lang="en">
@@ -16,16 +28,14 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
 
 <main class="column flex-center margin-vertical">
     <div class="row item-preview">
-        <img src="/img/placeholder.svg" alt="item">
+        <img src="/img/user-items/<?php echo $_SESSION["id"] ?>" alt="item">
         <div>
             <p>
-                Naam: Lorem
+                Naam: <?php echo $_SESSION["name"]; ?>
                 <br>
-                Geboortedatum: Ipsum
+                Email: <?php echo $_SESSION["email"]; ?>
                 <br>
-                Email: Dolor
-                <br>
-                Wachtwoord: ****
+                Wachtwoord: ********
             </p>
             <div>
                 <button style="background: #F00">Verwijder</button>
