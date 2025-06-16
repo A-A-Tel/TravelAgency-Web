@@ -1,18 +1,3 @@
-<?php
-session_start();
-require_once getenv("WEB_ROOT") . "php/classes/db.php";
-
-use classes\db;
-
-$db = new db();
-
-if (!$db->is_admin_session())
-{
-    $db->alert_and_send("Not permitted", "/account/");
-    exit;
-}
-?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,7 +9,7 @@ if (!$db->is_admin_session())
 </head>
 <body>
 <?php
-include getenv("WEB_ROOT") . "php/templates/header.php";
+include getenv("WEB_ROOT") . "/php/templates/header.php";
 ?>
 
 <main>
@@ -85,7 +70,7 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
 </main>
 
 <?php
-include getenv("WEB_ROOT") . "php/templates/footer.php";
+include getenv("WEB_ROOT") . "/php/templates/footer.php";
 ?>
 </body>
 </html>
