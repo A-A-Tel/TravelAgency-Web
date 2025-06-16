@@ -2,6 +2,15 @@
 title: travel_data
 ---
 erDiagram
+    contact {
+        BIGINT contact_id PK
+        VARCHAR name
+        VARCHAR email
+        TEXT message
+        BOOLEAN answered
+        TIMESTAMP created_at
+    }
+
     users {
         BIGINT user_id PK
         VARCHAR name
@@ -45,17 +54,8 @@ erDiagram
         TIMESTAMP created_at
     }
 
-    contact {
-        BIGINT contact_id PK
-        VARCHAR name
-        VARCHAR email
-        TEXT message
-        BOOLEAN answered
-        TIMESTAMP created_at
-    }
-
-    users ||--o{ bookings: makes
-    users ||--o{ reviews: writes
-    travels ||--o{ bookings: includes
-    travels ||--o{ reviews: has
-    locations ||--o{ travels: contains
+    users ||--o{ bookings: make
+    users ||--o{ reviews: write
+    travels ||--o{ bookings: include
+    travels ||--o{ reviews: have
+    locations ||--o{ travels: contain
