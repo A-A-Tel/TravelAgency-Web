@@ -1,17 +1,3 @@
-<?php
-session_start();
-require_once getenv("WEB_ROOT") . "php/classes/db.php";
-
-use classes\db;
-
-$db = new db();
-
-if (!$db->is_user_session()) {
-    $db->alert_and_send("Not permitted", "/login/");
-    exit;
-}
-?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -23,19 +9,21 @@ if (!$db->is_user_session()) {
 </head>
 <body>
 <?php
-include getenv("WEB_ROOT") . "php/templates/header.php";
+include getenv("WEB_ROOT") . "/php/templates/header.php";
 ?>
 
-<main class="column flex-center margin-vertical">
+<main class="column flex-center">
     <div class="row item-preview">
-        <img src="/img/user-items/<?php echo $_SESSION["id"] ?>" alt="item">
+        <img src="/img/placeholder.svg" alt="item">
         <div>
             <p>
-                Naam: <?php echo $_SESSION["name"]; ?>
+                Naam: Lorem
                 <br>
-                Email: <?php echo $_SESSION["email"]; ?>
+                Geboortedatum: Ipsum
                 <br>
-                Wachtwoord: ********
+                Email: Dolor
+                <br>
+                Wachtwoord: ****
             </p>
             <div>
                 <button style="background: #F00">Verwijder</button>
@@ -86,7 +74,7 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
 </main>
 
 <?php
-include getenv("WEB_ROOT") . "php/templates/footer.php";
+include getenv("WEB_ROOT") . "/php/templates/footer.php";
 ?>
 </body>
 </html>

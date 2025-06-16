@@ -1,38 +1,3 @@
-<?php
-session_start();
-require_once getenv("WEB_ROOT") . "php/classes/db.php";
-
-use classes\db;
-
-$db = new db();
-
-if ($_SERVER["REQUEST_METHOD"] !== "POST")
-{
-    $db->alert_and_send("Not permitted", "/account/");
-    exit;
-}
-
-$travel_id = $_POST["travel_id"];
-
-if (!preg_match("/^[0-9]+$/", $travel_id))
-{
-    echo("<script>alert('Invalid user ID'); window.location.href = '/admin/travel/';</script>");
-    exit;
-}
-
-$pdo = $db->get_pdo();
-
-$stmt = $pdo->prepare("SELECT travels.*,locations.name AS location_name FROM travels INNER JOIN locations ON travels.location_id = locations.location_id WHERE travel_id = :travel_id");
-$stmt->execute(["travel_id" => $travel_id]);
-$travel = $stmt->fetch();
-
-if (!$travel)
-{
-    $db->alert_and_send("Travel does not exist", "/travel/");
-    exit;
-}
-?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -45,66 +10,58 @@ if (!$travel)
 <body>
 
 <?php
-include getenv("WEB_ROOT") . "php/templates/header.php";
+    include getenv("WEB_ROOT") . "/php/templates/header.php";
 ?>
 
 <main class="column main-item">
     <div class="row item-preview">
-        <img src="/img/travel-items/<?php echo $travel["travel_id"] ?>" alt="item">
+        <img src="/img/placeholder.svg" alt="item">
         <div>
             <p>
-                Naam: <?php echo $travel["name"]; ?>
+                Naam: Lorem
                 <br>
-                Locatie: <?php echo $travel["location_name"]; ?>
+                Locatie: Ipsum
                 <br>
-                Prijs: &euro;<?php echo $travel["price"]; ?>
+                Prijs: Dolor
                 <br>
-                Beschrijving: <?php echo $travel["description"]; ?>
+                Beschrijving: Sit
             </p>
             <div>
                 <button style="background: #2AD49C">Toevoegen</button>
-                <button onclick="enterReviewPage('<?php echo $travel_id ?>')" style="background: #FF8800">Recenseer
-                </button>
+                <button style="background: #FF8800">Recenseer</button>
             </div>
         </div>
 
     </div>
     <h1>Recensies</h1>
-    <?php
-
-    $template = '
     <div name="review">
         <div>
-            <img src="/img/user-items/%s" alt="review">
+            <img src="/img/avatar-placeholder.png" alt="review">
             <div>
                 <div>
-                    %s
+                    <img src="/img/star.svg" alt="star">
+                    <img src="/img/star.svg" alt="star">
+                    <img src="/img/star.svg" alt="star">
+                    <img src="/img/star.svg" alt="star">
+                    <img src="/img/star.svg" alt="star">
                 </div>
-                <span>%s - %s</span>
+                <span>Lorem ipsum dolor sit amet</span>
             </div>
         </div>
-        <p>%s</p>
-    </div>';
-
-    $stmt = $pdo->prepare("SELECT reviews.*, users.name AS user_name, users.user_id FROM reviews INNER JOIN users ON reviews.user_id = users.user_id WHERE travel_id = :travel_id ORDER BY reviews.review_id DESC");
-
-    $stmt->execute(["travel_id" => $travel_id]);
-    $rows = $stmt->fetchAll();
-
-    foreach ($rows as $row)
-    {
-        $stars = "";
-
-        for ($i = 1; $i <= $row["score"]; $i++) $stars .= '<img src="/img/star-filled.svg" alt="star">';
-        for (; $i <= 5; $i++) $stars .= '<img src="/img/star.svg" alt="star">';
-
-        echo sprintf($template, $row["user_id"], $stars, $row["user_name"], $row["created_at"], $row["content"]);
-    }
-    ?>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        </p>
+    </div>
 </main>
 
 <?php
-include getenv("WEB_ROOT") . "php/templates/footer.php";
+    include getenv("WEB_ROOT") . "/php/templates/footer.php";
 ?>
 
 </body>

@@ -1,18 +1,3 @@
-<?php
-session_start();
-require_once getenv("WEB_ROOT") . "php/classes/db.php";
-
-use classes\db;
-
-$db = new db();
-
-if (!$db->is_admin_session())
-{
-    $db->alert_and_send("Not permitted", "/account/");
-    exit;
-}
-?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,51 +9,49 @@ if (!$db->is_admin_session())
 </head>
 <body>
 <?php
-include getenv('WEB_ROOT') . "php/templates/header.php";
+include getenv('WEB_ROOT') . "/php/templates/header.php";
 
 ?>
 <main>
     <div class="item-grid grid-wrap">
-
-
-        <?php
-
-
-
-
-        $pdo = $db->get_pdo();
-        $rows = $pdo->query("SELECT * FROM `contact` WHERE answered=0 ORDER BY `created_at`")->fetchAll();
-
-        foreach ($rows as $row)
-        {
-            $template = '
         <div class="item-info">
             <p>
-                Datum/Tijd: %s
+                Datum/Tijd: xx-xx-xxxx/xx:xx
                 <br>
-                Naam: %s
+                Naam: Lorem
                 <br>
-                Email: %s
+                Email: ipsum@dolor.sit
                 <br>
                 Bericht:
                 <br>
-                %s
+                amet consectetur adipiscing elit
             </p>
             <span>
-                <button onclick="adminAnswerContact(`%s`)" style="background: #27d39b;">Beantwoord</button>
+                <button style="background: #e12a37;">Verwijder</button>
+                <button style="background: #27d39b;">Beantwoord</button>
             </span>
         </div>
-        ';
-
-
-            echo sprintf($template, $row['created_at'], $row['name'], $row['email'], $row['message'], $row['contact_id']);
-        }
-
-        ?>
+        <div class="item-info">
+            <p>
+                Datum/Tijd: xx-xx-xxxx/xx:xx
+                <br>
+                Naam: Lorem
+                <br>
+                Email: ipsum@dolor.sit
+                <br>
+                Bericht:
+                <br>
+                amet consectetur adipiscing elit
+            </p>
+            <span>
+                <button style="background: #e12a37;">Verwijder</button>
+                <button style="background: #27d39b;">Beantwoord</button>
+            </span>
+        </div>
     </div>
 </main>
 <?php
-include getenv('WEB_ROOT') . "php/templates/footer.php";
+include getenv('WEB_ROOT') . "/php/templates/footer.php";
 ?>
 </body>
 </html>

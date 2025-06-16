@@ -3,4 +3,5 @@
 *.sass-cache/
 *.css
 *.css.map
-web/img/*-items/
+web/img/booking-items/
+web/img/location-items/
