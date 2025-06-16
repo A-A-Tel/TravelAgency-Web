@@ -45,6 +45,12 @@ function adminEditTravel(travel_id) {
     formSubmit(travel_id, "travel_id", "/admin/add-travel/");
 }
 
+// Admin check gets performed in the php file, required to submit via single button
+function deleteAccount(user_id) {
+
+    formSubmit(user_id, "user_id", "/php/process/deregister.php");
+}
+
 // Created to avoid repeating code
 function formSubmit(id, name, action) {
 

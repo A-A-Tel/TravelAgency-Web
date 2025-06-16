@@ -38,7 +38,7 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
                 Wachtwoord: ********
             </p>
             <div>
-                <button style="background: #F00">Verwijder</button>
+                <button onclick="deleteAccount('<?php echo $_SESSION['id'] ?>')" style="background: #F00">Verwijder</button>
                 <button style="background: #FF8800">Bewerk</button>
             </div>
         </div>
