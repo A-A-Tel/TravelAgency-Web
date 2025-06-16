@@ -25,7 +25,7 @@ $stmt = $pdo->prepare("DELETE FROM users WHERE user_id = :user_id");
 $stmt->execute(['user_id' => $user_id]);
 
 
-if ($db->is_user_session())
+if (!$db->is_admin_session())
 {
     require_once getenv("WEB_ROOT") . "php/process/logout.php";
 }

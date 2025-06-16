@@ -37,13 +37,17 @@ if (!$db->is_admin_session())
                 <span>%s - Created at: %s</span>
             </div>
         </div>
+        <span>
+            <button onclick="deleteAccount(`%s`)">Verwijder</button>
+            <button >Wijzig</button>
+        </span>
     </div>';
 
     $rows = $pdo->query("SELECT * FROM users");
 
     foreach ($rows as $row)
     {
-        echo sprintf($template, $row['user_id'], $row['name'], $row['created_at']);
+        echo sprintf($template, $row['user_id'], $row['name'], $row['created_at'], $row['user_id']);
     }
 
     ?>
