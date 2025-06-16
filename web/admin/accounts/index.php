@@ -39,7 +39,7 @@ if (!$db->is_admin_session())
         </div>
         <span>
             <button onclick="deleteAccount(`%s`)">Verwijder</button>
-            <button >Wijzig</button>
+            <button onclick="editAccount(`%s`)" >Wijzig</button>
         </span>
     </div>';
 
@@ -47,7 +47,7 @@ if (!$db->is_admin_session())
 
     foreach ($rows as $row)
     {
-        echo sprintf($template, $row['user_id'], $row['name'], $row['created_at'], $row['user_id']);
+        echo sprintf($template, $row['user_id'], $row['name'], $row['created_at'], $row['user_id'], $row['user_id']);
     }
 
     ?>
