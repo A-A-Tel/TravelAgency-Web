@@ -51,6 +51,11 @@ function deleteAccount(user_id) {
     formSubmit(user_id, "user_id", "/php/process/deregister.php");
 }
 
+// Send user to account editing page in a valid way
+function editAccount(user_id) {
+    formSubmit(user_id, "user_id", "/edit-account/");
+}
+
 // Created to avoid repeating code
 function formSubmit(id, name, action) {
 

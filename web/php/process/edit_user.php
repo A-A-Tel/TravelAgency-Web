@@ -12,7 +12,7 @@ if (!$db->is_user_session() || $_SERVER["REQUEST_METHOD"] !== "POST")
     exit;
 }
 
-$user_id = $db->is_admin_session() ? $_POST["id"] : $_SESSION["id"];
+$user_id = $db->is_admin_session() ? $_POST["user_id"] : $_SESSION["id"];
 
 $name = $_POST['name'];
 $email = $_POST['email'];
@@ -39,15 +39,17 @@ $stmt = $pdo->prepare("SELECT users.user_id FROM users WHERE users.email = :emai
 $stmt->execute(["email" => $email]);
 $user = $stmt->fetch();
 
-if ($user && $user["user_id"] != $user_id)
+if ($user && $user["user_id"] !== $user_id)
 {
-    $db->alert_and_send("Email already registered", "/account/");
+    var_dump($user, $user_id);
+//    $db->alert_and_send("Email already registered", "/account/");
     exit;
 }
 
 if ($change_pass)
 {
     $stmt = $pdo->prepare("UPDATE users SET name=:name, email=:email, pass=:pass WHERE user_id=:user_id");
+    $pass = password_hash($pass, PASSWORD_DEFAULT);
     $stmt->execute(["name" => $name, "email" => $email, "pass" => $pass, "user_id" => $user_id]);
 }
 else

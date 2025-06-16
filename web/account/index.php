@@ -39,7 +39,7 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
             </p>
             <div>
                 <button onclick="deleteAccount('<?php echo $_SESSION['id'] ?>')" style="background: #F00">Verwijder</button>
-                <button style="background: #FF8800">Bewerk</button>
+                <button onclick="editAccount('<?php echo $_SESSION['id'] ?>')" style="background: #FF8800">Bewerk</button>
             </div>
         </div>
     </div>
