@@ -9,12 +9,16 @@ $logo_link = "/";
 
 if ($user_session)
 {
-    $login_button = "<button onclick='rd(`/account/`)' class='nav-button login-button'>Account</button>";
     $avatar_path = "/img/user-items/{$_SESSION['id']}";
 
     if ($db->is_admin_session())
     {
         $logo_link = "/admin/";
+        $login_button = "<button onclick='rd(`/admin/accounts/`)' class='nav-button login-button'>Accounts</button>";
+    }
+    else
+    {
+        $login_button = "<button onclick='rd(`/account/`)' class='nav-button login-button'>Account</button>";
     }
 }
 else
