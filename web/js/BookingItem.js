@@ -15,8 +15,7 @@ class TravelItem extends HTMLElement {
             <button onclick="enterItemPage(${this.id})""></button>
             <h2>${this.getAttribute("loc") ?? "Lorem"} - ${this.getAttribute("name") ?? "ipsum"}</h2>
             <span>
-                <button style="background: #F00">-</button>
-                <button style="background: #0e7a0e">+</button>
+                <button onclick="" style="background: #0e7a0e">+</button>
             </span>
            
             
