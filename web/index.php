@@ -1,6 +1,5 @@
-<?php session_start(); ?>
-
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +9,7 @@
 </head>
 <body>
 <?php
-    include getenv("WEB_ROOT") . "php/templates/header.php";
+    include getenv("WEB_ROOT") . "/php/templates/header.php";
 ?>
 
 <main class="main home-main">
@@ -21,13 +20,13 @@
             verder en ontdek de wereld.
         </p>
     </div>
-    <form action="/travel/" method="POST" class="home-search">
+    <form action="#" method="POST" class="home-search">
         <input type="text" name="search" placeholder="Search">
     </form>
 </main>
 
 <?php
-    include getenv("WEB_ROOT") . "php/templates/footer.php";
+    include getenv("WEB_ROOT") . "/php/templates/footer.php";
 ?>
 
 <script src="/js/main.js"></script>
