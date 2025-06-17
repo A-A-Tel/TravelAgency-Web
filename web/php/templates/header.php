@@ -30,7 +30,7 @@ else
 <script src="/js/main.js"></script>
 <header>
 
-    <?php if ($user_session) echo '<button onclick="new localStorage.clear(); rd(`/php/process/logout.php`)" class="mode-button"></button>' ?>
+    <?php if ($user_session) echo '<button onclick="localStorage.clear(); rd(`/php/process/logout.php`)" class="mode-button"></button>' ?>
     <nav>
         <button onclick="rd('/')" class="nav-button">Start</button>
         <button onclick="rd('/about/')" class="nav-button">Over</button>
