@@ -25,8 +25,9 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
 
 <main>
 
-    <form action="/travel/" method="POST" class="home-search travel-search">
+    <form action="/travel/" method="POST" class="home-search travel-search row">
         <input type="text" name="search" placeholder="Search">
+        <button type="button" onclick="rd('/order/')" class="submit">Boekings</button>
     </form>
 
     <div class="item-grid">
