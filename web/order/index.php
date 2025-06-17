@@ -1,4 +1,5 @@
 <?php
+require_once getenv("WEB_ROOT") . "php/classes/order.php";
 session_start();
 require_once getenv("WEB_ROOT") . "php/classes/db.php";
 
@@ -11,6 +12,7 @@ if (!$db->is_user_session())
     $db->alert_and_send("Not permitted", "/");
     exit;
 }
+$pdo = $db->get_pdo();
 ?>
 <!doctype html>
 <html lang="en">
@@ -28,9 +30,30 @@ if (!$db->is_user_session())
     <h1 class="title">Uw bestelling</h1>
     <form action="/php/process/order.php" method="POST">
 
-        <div class="form-item">
-            <h2>Travel name<br>Begin date<br>end date<br>Price</h2>
-        </div>
+        <?php
+
+        $template = "
+                <div class='form-item'>
+                    <h2>Naam: %s<br>Prijs: &euro;%s<br>Begindatum: %s<br>Einddatum: %s</h2>
+                </div>
+        ";
+
+        if (isset($_SESSION["orders"]) && count($_SESSION["orders"]) > 0)
+        {
+            $orders = $_SESSION["orders"];
+            for ($i = 0; $i < count($orders); $i++)
+            {
+                $order = $orders[$i];
+
+                $stmt = $pdo->prepare("SELECT travels.name, travels.price FROM travels WHERE travel_id=:travel_id");
+                $stmt->execute([":travel_id" => $order->get_travel_id()]);
+                $travel = $stmt->fetch();
+
+                echo sprintf($template, $travel['name'], $travel['price'], $order->get_start(), $order->get_end());
+            }
+        }
+
+        ?>
 
         <input type="submit" value="Bestellen..." class="submit">
     </form>
