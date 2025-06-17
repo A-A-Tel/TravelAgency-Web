@@ -61,6 +61,12 @@ function bookTravel(travel_id) {
     formSubmit(travel_id, "travel_id", "/booking/");
 }
 
+// Allow users and admins to delete bookings
+function removeBooking(booking_id) {
+
+    formSubmit(booking_id, "booking_id", "/php/process/remove_booking.php/");
+}
+
 // Created to avoid repeating code
 function formSubmit(id, name, action) {
 

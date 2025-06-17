@@ -28,7 +28,7 @@ $pdo = $db->get_pdo();
 
 <main class="column align-center">
     <h1 class="title">Uw bestelling</h1>
-    <form action="/php/process/book_travels.php" method="POST">
+    <form action="/php/process/add_booking.php" method="POST">
 
         <?php
 
