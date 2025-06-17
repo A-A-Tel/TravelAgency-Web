@@ -44,7 +44,7 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
                     Reis: %s
                 </p>
                 <span>
-                    <button style="background: #e12a37;">Verwijder</button>
+                    <button onclick="removeBooking(`%s`)" style="background: #e12a37;">Verwijder</button>
                     <button style="background: #27d39b;">Keur goed</button>
                 </span>
             </div>
@@ -54,7 +54,7 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
 
         foreach ($rows as $row)
         {
-            echo sprintf($template, $row['user_name'], $row['begin_date'], $row['end_date'], $row['travel_name']);
+            echo sprintf($template, $row['user_name'], $row['begin_date'], $row['end_date'], $row['travel_name'], $row['booking_id']);
         }
         ?>
 

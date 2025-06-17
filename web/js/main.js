@@ -53,11 +53,13 @@ function deleteAccount(user_id) {
 
 // Send user to account editing page in a valid way
 function editAccount(user_id) {
+
     formSubmit(user_id, "user_id", "/edit-account/");
 }
 
 // Send user to the booking page
 function bookTravel(travel_id) {
+
     formSubmit(travel_id, "travel_id", "/booking/");
 }
 
