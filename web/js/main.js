@@ -69,6 +69,10 @@ function removeBooking(booking_id) {
     formSubmit(booking_id, "booking_id", "/php/process/remove_booking.php/");
 }
 
+function approveBooking(booking_id) {
+    formSubmit(booking_id, "booking_id", "/php/process/approve_booking.php");
+}
+
 // Created to avoid repeating code
 function formSubmit(id, name, action) {
 
