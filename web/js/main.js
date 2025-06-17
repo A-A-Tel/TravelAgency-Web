@@ -45,6 +45,34 @@ function adminEditTravel(travel_id) {
     formSubmit(travel_id, "travel_id", "/admin/add-travel/");
 }
 
+// Admin check gets performed in the php file, required to submit via single button
+function deleteAccount(user_id) {
+
+    formSubmit(user_id, "user_id", "/php/process/deregister.php");
+}
+
+// Send user to account editing page in a valid way
+function editAccount(user_id) {
+
+    formSubmit(user_id, "user_id", "/edit-account/");
+}
+
+// Send user to the booking page
+function bookTravel(travel_id) {
+
+    formSubmit(travel_id, "travel_id", "/booking/");
+}
+
+// Allow users and admins to delete bookings
+function removeBooking(booking_id) {
+
+    formSubmit(booking_id, "booking_id", "/php/process/remove_booking.php/");
+}
+
+function approveBooking(booking_id) {
+    formSubmit(booking_id, "booking_id", "/php/process/approve_booking.php");
+}
+
 // Created to avoid repeating code
 function formSubmit(id, name, action) {
 

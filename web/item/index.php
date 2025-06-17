@@ -62,7 +62,7 @@ include getenv("WEB_ROOT") . "php/templates/header.php";
                 Beschrijving: <?php echo $travel["description"]; ?>
             </p>
             <div>
-                <button style="background: #2AD49C">Toevoegen</button>
+                <button onclick="bookTravel(<?php echo $travel_id ?>)" style="background: #2AD49C">Toevoegen</button>
                 <button onclick="enterReviewPage('<?php echo $travel_id ?>')" style="background: #FF8800">Recenseer
                 </button>
             </div>

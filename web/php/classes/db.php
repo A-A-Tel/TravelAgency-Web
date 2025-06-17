@@ -23,6 +23,15 @@ class db
         return $this->pdo;
     }
 
+    /**
+     * <p>
+     * Return true if a session is valid.
+     * Please note that this does not return false if the user is an admin.
+     * This will also return false when a session is not active.
+     * </p>
+     * @return bool
+     * @see is_admin_session for extended functionality
+     */
     public function is_user_session(): bool
     {
         if (session_status() !== PHP_SESSION_ACTIVE) return false;
@@ -30,6 +39,15 @@ class db
         return isset($_SESSION['valid']) && $_SESSION['valid'];
     }
 
+    /**
+     * <p>
+     * Return true if a user is admin.
+     * This will also return false when a session is not active.
+     *
+     * </p>
+     * @return bool
+     * @uses is_user_session
+     */
     public function is_admin_session(): bool
     {
         return $this->is_user_session() && $_SESSION['is_admin'];

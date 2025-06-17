@@ -143,7 +143,7 @@ footer {
 form {
   background: $reg-secondary;
   width: 60vw;
-  padding: 8vw 10vw;
+  padding: 8vw 5vw;
   border-radius: 4vw;
   margin: 10vw auto;
   color: $text-secondary;
@@ -197,6 +197,14 @@ form {
   display: flex;
   justify-content: space-between;
   padding: 6vw;
+}
+
+.title {
+  margin-top: 5vw;
+  font: {
+    family: 'concert-one', sans-serif;
+    size: 8vw;
+  }
 }
 
 .home-main {
@@ -358,6 +366,7 @@ form {
 }
 
 .submit {
+  padding: 1vw;
   width: 12vw;
   height: 4vw;
   background: $reg-primary;
@@ -437,6 +446,11 @@ form {
       width: 7vw;
       height: 7vw;
       border-radius: 50%;
+    }
+    button {
+      padding: 1vw;
+      border-radius: 0.6vw;
+      margin: 0 2vw;
     }
   }
 }

@@ -9,12 +9,16 @@ $logo_link = "/";
 
 if ($user_session)
 {
-    $login_button = "<button onclick='rd(`/account/`)' class='nav-button login-button'>Account</button>";
     $avatar_path = "/img/user-items/{$_SESSION['id']}";
 
     if ($db->is_admin_session())
     {
         $logo_link = "/admin/";
+        $login_button = "<button onclick='rd(`/admin/accounts/`)' class='nav-button login-button'>Accounts</button>";
+    }
+    else
+    {
+        $login_button = "<button onclick='rd(`/account/`)' class='nav-button login-button'>Account</button>";
     }
 }
 else
@@ -26,7 +30,7 @@ else
 <script src="/js/main.js"></script>
 <header>
 
-    <?php if ($user_session) echo '<button onclick="rd(`/php/process/logout.php`)" class="mode-button"></button>' ?>
+    <?php if ($user_session) echo '<button onclick="new localStorage.clear(); rd(`/php/process/logout.php`)" class="mode-button"></button>' ?>
     <nav>
         <button onclick="rd('/')" class="nav-button">Start</button>
         <button onclick="rd('/about/')" class="nav-button">Over</button>
@@ -36,7 +40,7 @@ else
     <nav>
         <button onclick="rd('/travel/')" class="nav-button">Reizen</button>
         <button onclick="rd('/contact/')" class="nav-button">Contact</button>
-        <?php echo $login_button; ?>
+        <?php echo $login_button ?>
     </nav>
     <?php if ($user_session) echo "<img src='$avatar_path' alt='avatar' class='avatar'>" ?>
 </header>
