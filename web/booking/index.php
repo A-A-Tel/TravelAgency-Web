@@ -14,7 +14,7 @@ $travel_id = $_POST['travel_id'];
 
 $pdo = $db->get_pdo();
 $stmt = $pdo->prepare("SELECT * FROM bookings WHERE travel_id=:travel_id AND user_id=:user_id");
-$stmt->execute(["travel_id" => $travel_id,  "user_id" => $_SESSION['user_id']]);
+$stmt->execute(["travel_id" => $travel_id,  "user_id" => $_SESSION['id']]);
 $booking =  $stmt->fetch();
 
 if ($booking) {
@@ -35,13 +35,13 @@ if ($booking) {
 <?php include getenv("WEB_ROOT") . "php/templates/header.php" ?>
 
 <main>
-    <form action="/php/process/store_order.php">
+    <form action="/php/process/store_order.php" method="POST">
 
         <input type="hidden" name="travel_id" value="<?php echo $travel_id; ?>">
 
         <div class="form-item">
             <h2>Begindatum</h2>
-            <input required type="date" name="begin">
+            <input required type="date" name="start">
         </div>
         <div class="form-item">
             <h2>Einddatum</h2>

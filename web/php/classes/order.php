@@ -12,13 +12,13 @@ class order {
         $this->start = $start;
         $this->end = $end;
     }
-    public function getId(): string {
+    public function get_id(): string {
         return $this->travel_id;
     }
-    public function getStart(): string {
+    public function get_start(): string {
         return $this->start;
     }
-    public function getEnd(): string {
+    public function get_end(): string {
         return $this->end;
     }
 }

@@ -56,6 +56,11 @@ function editAccount(user_id) {
     formSubmit(user_id, "user_id", "/edit-account/");
 }
 
+// Send user to the booking page
+function bookTravel(travel_id) {
+    formSubmit(travel_id, "travel_id", "/booking/");
+}
+
 // Created to avoid repeating code
 function formSubmit(id, name, action) {
 

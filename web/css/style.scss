@@ -199,6 +199,14 @@ form {
   padding: 6vw;
 }
 
+.title {
+  margin-top: 5vw;
+  font: {
+    family: 'concert-one', sans-serif;
+    size: 8vw;
+  }
+}
+
 .home-main {
   background: #000 url("/img/mountain.png") no-repeat center / 100%;
 }
