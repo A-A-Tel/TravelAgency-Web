@@ -38,8 +38,8 @@ if (!$db->is_admin_session())
             </div>
         </div>
         <span>
-            <button onclick="deleteAccount(`%s`)">Verwijder</button>
-            <button onclick="editAccount(`%s`)" >Wijzig</button>
+            <button style="background: #FF0000" onclick="deleteAccount(`%s`)">Verwijder</button>
+            <button style="background: #FF8800" onclick="editAccount(`%s`)" >Wijzig</button>
         </span>
     </div>';
 
