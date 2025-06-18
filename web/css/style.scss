@@ -179,11 +179,12 @@ form {
 }
 
 .mode-button {
-  width: 3vw;
-  height: 3vw;
-  background: url("/img/sun.svg") no-repeat center / 100%;
+  width: 6vw;
+  height: 6vw;
+  background: url("/img/sun.svg") no-repeat center / 100% 100%;
   position: absolute;
-  left: 4.6vw;
+  left: 3.3vw;
+  top: 1.5vw;
 }
 
 .login-button {
@@ -323,10 +324,10 @@ form {
     background: $accent;
     border: 0;
   }
-  span {
+  span, a {
     color: $text-primary;
-    display: block;
     margin-top: 2vw;
+    text-decoration: underline;
     font: {
       family: 'concert-one', sans-serif;
       size: 1.5vw;
@@ -339,7 +340,7 @@ form {
   flex-direction: column;
   gap: 3vw;
   align-items: center;
-  input, textarea {
+  input, textarea, select {
     width: 20vw;
     height: 3vw;
     background: $reg-primary;
@@ -370,6 +371,9 @@ form {
   height: 4vw;
   background: $reg-primary;
   cursor: pointer;
+  display: grid;
+  place-items: center;
+  color: $text-primary;
   border: {
     style: solid;
     color: $accent;
@@ -393,6 +397,7 @@ form {
 
 .main-item {
   padding: 10vw;
+  gap: 5vw;
   h1 {
     margin: 5vw auto;
     font: {
@@ -465,10 +470,9 @@ form {
     align-items: center;
     justify-content: space-between;
     p {
-      max-width: 30vw;
       font: {
         family: 'concert-one', sans-serif;
-        size: 3vw;
+        size: 2.3vw;
       }
     }
     div {
@@ -536,7 +540,12 @@ form {
   p {
     max-width: 24vw;
   }
-  button {
+  img {
+    width: 20vw;
+    height: 20vw;
+    border-radius: 0.6vw;
+  }
+  button, a {
     padding: 1vw;
     border-radius: 0.6vw;
     font: {
@@ -552,4 +561,37 @@ form {
 
 .grid-wrap {
   grid-template-columns: repeat(2, 1fr);
+}
+
+.gap-5vw {
+  gap: 5vw;
+}
+
+.margin-vertical {
+  margin: 10vw 0;
+}
+
+.no-render {
+  display: none;
+}
+
+.travel-search {
+  margin: 5vw auto;
+}
+
+.location-span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.location-remove-button {
+  margin: 1vw auto;
+  padding: 0.5vw;
+  border-radius: 0.6vw;
+  text-decoration: none;
+  font: {
+    family: 'concert-one', sans-serif;
+    size: 1.3vw;
+  }
 }
