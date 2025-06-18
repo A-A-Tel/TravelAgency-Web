@@ -1,4 +1,4 @@
-class BookingItem extends HTMLElement {
+class TravelItem extends HTMLElement {
 
     constructor() {
         super();
@@ -8,13 +8,14 @@ class BookingItem extends HTMLElement {
 
     connectedCallback() {
 
+        const forms = document.getElementById("forms");
+
         this._shadow.innerHTML = `
             
-            <div></div>
+            <button onclick="enterItemPage(${this.id})"></button>
             <h2>${this.getAttribute("loc") ?? "Lorem"} - ${this.getAttribute("name") ?? "ipsum"}</h2>
             <span>
-                <button style="background: #F00">-</button>
-                <button style="background: #0e7a0e">+</button>
+                <button onclick="bookTravel(${this.id})" style="background: #0e7a0e">+</button>
             </span>
            
             
@@ -24,14 +25,20 @@ class BookingItem extends HTMLElement {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
                 }
-                :host div {
+                :host button {
                     width: 20vw;
                     height: 20vw;
-                    background: #004D3E url('${"/img/contact-items/" + (this.id !== "" ? this.id : "../placeholder.svg")}') no-repeat center / 100%;
+                    background: #004D3E url('${"/img/travel-items/" + (this.id !== "" ? this.id : "../placeholder.svg")}') no-repeat center / 100% 100%;
                     overflow: hidden;
+                    color: inherit;
+                    border: none;
+                    cursor: pointer;
                 }
-                :host div::after {
+                :host button::after {
                     content: '${"€" + (this.getAttribute("price") ?? "XX,XX")}';
                     position: relative;
                     width: 10vw;
@@ -39,7 +46,7 @@ class BookingItem extends HTMLElement {
                     background: #00FFA2;
                     border-radius: 50%;
                     left: 11.5vw;
-                    top: 11.5vw;
+                    top: 7vw;
                     display: grid;
                     place-items: center;
                     font-family: 'concert-one', sans-serif;
@@ -48,13 +55,14 @@ class BookingItem extends HTMLElement {
                 :host h2 {
                     font-family: 'concert-one', sans-serif;
                     font-size: 1.7vw;
+                    text-align: center;
                 }
                 :host span {
                     display: flex;
                     gap: 5vw;
                     
                 }
-                :host button {
+                :host span button {
                     border: none;
                     border-radius: 4vw;
                     outline: none;
@@ -70,4 +78,4 @@ class BookingItem extends HTMLElement {
     }
 }
 
-customElements.define("booking-item", BookingItem);
+customElements.define("travel-item", TravelItem);

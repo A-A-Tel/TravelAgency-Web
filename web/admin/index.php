@@ -1,3 +1,18 @@
+<?php
+session_start();
+require_once getenv("WEB_ROOT") . "php/classes/db.php";
+
+use classes\db;
+
+$db = new db();
+
+if (!$db->is_admin_session())
+{
+    $db->alert_and_send("Not permitted", "/account/");
+    exit;
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,7 +24,7 @@
 </head>
 <body>
 <?php
-include getenv('WEB_ROOT') . "/php/templates/header.php";
+include getenv('WEB_ROOT') . "php/templates/header.php";
 ?>
 
 <main class="row align-center justify-center">
@@ -25,7 +40,7 @@ include getenv('WEB_ROOT') . "/php/templates/header.php";
             <span>Reizen beheren</span>
         </div>
     </a>
-    
+
     <a href="/admin/contact/">
         <div class="admin-item">
             <img src="/img/scammers.png" alt="scammers">
@@ -35,7 +50,7 @@ include getenv('WEB_ROOT') . "/php/templates/header.php";
 </main>
 
 <?php
-include getenv('WEB_ROOT') . "/php/templates/footer.php";
+include getenv('WEB_ROOT') . "php/templates/footer.php";
 ?>
 </body>
 </html>

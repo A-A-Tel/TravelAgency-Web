@@ -1,16 +1,11 @@
 services:
   web:
-    image: php:8.0-apache
     container_name: travel_web
     build:
       context: web/
     restart: no
     ports:
       - "8000:80"
-    volumes:
-      - ./web:${WEB_ROOT}
-    depends_on:
-      - db
     environment:
       DB_HOST: db
       DB_PORT: 3306
@@ -18,23 +13,26 @@ services:
       DB_USER: ${DB_USER}
       DB_PASS: ${DB_PASS}
       WEB_ROOT: ${WEB_ROOT}
+    volumes:
+      - ./web:/var/www/html/
+    depends_on:
+      - db
 
 
   db:
-    image: mysql:latest
     restart: no
-    build:
-      context: ./db/
+    container_name: travel_db
+    image: mysql:latest
+    ports:
+      - "3306:3306"
     environment:
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASS}
       MYSQL_ROOT_PASSWORD: ${DB_ROOT}
-    ports:
-      - "3306:3306"
     volumes:
       - travel_data:/var/lib/mysql
-      - ./db/init.sql:/var/init.sql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
   travel_data:
